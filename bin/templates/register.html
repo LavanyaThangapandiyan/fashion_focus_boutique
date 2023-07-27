@@ -7,10 +7,6 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css">
-	<script src="app.js" defer></script>
 	<title>Register</title>
 </head>
 
@@ -18,6 +14,9 @@
 	<header>
 		<nav class="navbar navbar-expand-md navbar-dark" style="background-color: purple">
 			<div>
+				<img alt="logo"
+					src="https://t3.ftcdn.net/jpg/02/94/87/50/360_F_294875066_WmW95xUPQ4R51in63vIcKogyq1LX8ROV.jpg"
+					class="logo" />
 				<a href="" class="navbar-brand">Fashion Focus Boutique</a>
 				<a th:href="@{/}" class="navbar-brand">Home</a>
 			</div>
@@ -192,12 +191,14 @@
 		};
 	</script>
 	<style>
+		.logo {
+			max-width: 70px;
+		}
+
 		body {
 			background: url(https://img.freepik.com/premium-photo/female-hand-holding-placard-with-open-sign-clothes-shop_249974-3699.jpg) no-repeat center center fixed;
 			background-size: cover;
 		}
-
-
 
 		#error {
 			text-align: center;

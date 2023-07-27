@@ -1,50 +1,60 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xml:lang="en">
+
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Category</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<meta charset="ISO-8859-1">
+	<title>Update Product</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
+
 <body>
-<header>
-<div class="tab">
-      <nav class="navbar navbar-expand-md navbar-dark"
-			style="background-color: #740074">
-			<a th:href="@{/}"class="navbar-brand">Fashion Focus Boutique</a>
-      </nav>
-</div>		
-</header>
-    <div class="container">
-        <hr>
-        <h2>Update Product</h2>
-        <div>
-        <p id="error" th:text="${existProduct}"></p>
-        <span id="replace_target"></span>
-       </div>
-        
-        <form  th:action="@{/updateproduct}" th:object="${product}" method="GET">
+	<header>
+		<div class="tab">
+			<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #740074">
+				<img alt="logo"
+					src="https://t3.ftcdn.net/jpg/02/94/87/50/360_F_294875066_WmW95xUPQ4R51in63vIcKogyq1LX8ROV.jpg"
+					class="logo" />
+				<a th:href="@{/}" class="navbar-brand">Fashion Focus Boutique</a>
+			</nav>
+		</div>
+	</header>
+	<div class="container">
+		<hr>
+		<h2>Update Product</h2>
+		<div>
+			<p id="error" th:text="${existProduct}"></p>
+			<span id="replace_target"></span>
+		</div>
 
-            <!-- Add hidden form field to handle update -->
-            <input type="hidden" th:field="*{id}" />
-              <input type="text" th:field="*{name}" class="form-control mb-4 col-4" required>
-              <input type="text" th:field="*{price}" class="form-control mb-4 col-4" required>
-              <input type="text" th:field="*{type}" class="form-control mb-4 col-4" required>
-              <input type="text" th:field="*{size}" class="form-control mb-4 col-4" required>
-              <input type="number" th:field="*{quantity}" class="form-control mb-4 col-4" required>
-              <input type="text" th:field="*{fabric}" class="form-control mb-4 col-4" required>
-              <input type="text" th:field="*{gender}" class="form-control mb-4 col-4" required>
+		<form th:action="@{/updateproduct}" th:object="${product}" method="GET">
 
-            <button type="submit" class="btn btn-info col-2"> Update Product</button>
-        </form>
-        <hr>
-        <a th:href="@{/allproduct}"> Back to Product List</a>
-    </div>
-    <style>
-    #error {
-    text-align: center;
-  color:red;
-  text-indent: 30px;
-}  
-    </style>
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{id}" />
+			<input type="text" th:field="*{name}" class="form-control mb-4 col-4" required>
+			<input type="text" th:field="*{price}" class="form-control mb-4 col-4" required>
+			<input type="text" th:field="*{type}" class="form-control mb-4 col-4" required>
+			<input type="text" th:field="*{size}" class="form-control mb-4 col-4" required>
+			<input type="number" th:field="*{quantity}" class="form-control mb-4 col-4" required>
+			<input type="text" th:field="*{fabric}" class="form-control mb-4 col-4" required>
+			<input type="text" th:field="*{gender}" class="form-control mb-4 col-4" required>
+
+			<button type="submit" class="btn btn-info col-2"> Update Product</button>
+		</form>
+		<hr>
+		<a th:href="@{/allproduct}"> Back to Product List</a>
+	</div>
+	<style>
+		.logo {
+			max-width: 70px;
+		}
+
+		#error {
+			text-align: center;
+			color: red;
+			text-indent: 30px;
+		}
+	</style>
 </body>
+
 </html>

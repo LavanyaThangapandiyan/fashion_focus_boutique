@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org" xml:lang="en">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <head>
@@ -20,8 +19,8 @@
 				<div class="topnav-right">
 					<a th:href="@{/login}" class="navbar-brand"><i class="fa fa-fw fa-user"></i> Login</a>
 				</div>
-			</nav>
 		</div>
+		</nav>
 	</header>
 	<div class="tab">
 		<button class="tablinks" onclick="openCity(event, 'ethnic')">Women Ethnic</button>
@@ -30,7 +29,7 @@
 		<button class="tablinks" onclick="openCity(event, 'kids')">Kids</button>
 	</div>
 	<!-- Tab content -->
-	<div id="ethnic" class="tabcontent" aria-describedby="mydesc">
+	<div id="ethnic" class="tabcontent">
 		<h4 style="color:purple;">All Women Ethnic</h4>
 		<table aria-describedby="mydesc">
 			<thead>
@@ -169,13 +168,11 @@
 			<thead>
 				<th>Kids Wear</th>
 			</thead>
-			<tbody>
-				<tr>
-					<form id="form" th:action="@{/kids}" th:object="${product}" method="Get">
-						<td> <button type="submit">All Dresses</button></td>
-					</form>
-				</tr>
-			</tbody>
+			<tr>
+				<form id="form" th:action="@{/kids}" th:object="${product}" method="Get">
+					<td> <button type="submit">All Dresses</button></td>
+				</form>
+			</tr>
 		</table>
 	</div>
 	<div class="text">
@@ -270,8 +267,6 @@
 
 	<br><br><br>
 
-
-
 	<script>
 		let slideIndex = 0;
 		showSlides();
@@ -330,6 +325,51 @@
 
 	</script>
 	<style>
+		.tab {
+			overflow: hidden;
+			border: 1px solid #ccc;
+			background-color: #f1f1f1;
+		}
+
+		/* Style the buttons that are used to open the tab content */
+		.tab button {
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 14px 16px;
+			transition: 0.3s;
+		}
+
+		/* Change background color of buttons on hover */
+		.tab button:hover {
+			background-color: #94149f;
+		}
+
+		/* Create an active/current tablink class */
+		.tab button.active {
+			background-color: #94149f;
+		}
+
+		/* Style the tab content */
+		.tabcontent {
+			display: none;
+			padding: 6px 12px;
+			border: 1px solid #ccc;
+			border-top: none;
+		}
+
+		/* Style the tab */
+		table {
+			border-collapse: separate;
+			border-spacing: 50px 0;
+		}
+
+		td {
+			padding: 10px 0;
+		}
+
 		.card {
 			border-radius: 30px;
 			box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
@@ -451,78 +491,6 @@
 			body {
 				background: #171717;
 			}
-
-			.search-bar input {
-				box-shadow: 0 0 0 0.4em #f1f1f1 inset;
-			}
-
-			.search-bar input:focus,
-			.search-bar input:valid {
-				background: #3d3d3d;
-				box-shadow: 0 0 0 0.1em #3d3d3d inset;
-			}
-
-			.search-btn {
-				background: #f1f1f1;
-			}
-		}
-
-		/* ---Top 2 navigation*/
-
-		.tab {
-			overflow-wrap: break-word;
-			border: 20px solid #ccc;
-			background-color: #fdfcfc;
-		}
-
-		.tab a:hover {
-			background-color: #94149f;
-			padding: 5px 5px;
-		}
-
-		/* Create an active/current tablink class */
-		.tab a.active {
-			background-color: #94149f;
-		}
-
-		/* Style the tab */
-		table {
-			border-collapse: separate;
-			border-spacing: 50px 0;
-		}
-
-		td {
-			padding: 10px 0;
-		}
-
-
-		/* Style the buttons that are used to open the tab content */
-		.tab button {
-			background-color: inherit;
-			float: left;
-			border: none;
-			outline: none;
-			cursor: pointer;
-			padding: 14px 16px;
-			transition: 0.3s;
-		}
-
-		/* Change background color of buttons on hover */
-		.tab button:hover {
-			background-color: #94149f;
-		}
-
-		/* Create an active/current tablink class */
-		.tab button.active {
-			background-color: #94149f;
-		}
-
-		/* Style the tab content */
-		.tabcontent {
-			display: none;
-			padding: 6px 12px;
-			border: 1px solid #ccc;
-			border-top: none;
 		}
 
 		/*Top Navigation */

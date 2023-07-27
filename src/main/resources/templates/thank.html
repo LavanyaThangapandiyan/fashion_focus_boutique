@@ -2,41 +2,50 @@
 <html xmlns:th="https://thymeleaf.org" xml:lang="en">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Home</title>
+	<meta charset="ISO-8859-1">
+	<title>Thanks</title>
 </head>
 <body>
-   <header>
-<div class="tab">
-    <nav class="navbar navbar-expand-md navbar-dark"
-			style="background-color: #740074">
-			 <img alt ="logo" src="https://t3.ftcdn.net/jpg/02/94/87/50/360_F_294875066_WmW95xUPQ4R51in63vIcKogyq1LX8ROV.jpg"
-                class="logo" />
-			<a href="" class="navbar-brand">Fashion Focus Boutique</a>
-		<div class="topnav-right">
-		</div>	
-    </nav>
-</div>		
-</header>
+	<header>
+		<div class="tab">
+			<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #740074">
+				<img alt="logo"
+					src="https://t3.ftcdn.net/jpg/02/94/87/50/360_F_294875066_WmW95xUPQ4R51in63vIcKogyq1LX8ROV.jpg"
+					class="logo" />
+				<a href="" class="navbar-brand">Fashion Focus Boutique</a>
+				<a th:href="@{/myorder}" class="navbar-brand">My Orders</a>
+				<a th:href="@{/}" class="navbar-brand">Log Out</a>
+				<div class="topnav-right">
+				</div>
+			</nav>
+		</div>
+	</header>
+	<br><br><br><br><br>
+	<div class="text">
+		<h3 style="color: black">Delivers Excellent Customer Service at our Boutique</h3><br>
+		<h4 style="color: black">Lowest Prices Best Quality Shopping.</h4>
 
- <div class="text">
-        <h3 style="color: #740074">Delivers Excellent Customer Service at our Boutique</h3><br>
-        <h4 style="color: #740074">Lowest Prices Best Quality Shopping.</h4>
-        
-        <br><br><br><br><br>
-        <h4>Hi, <p th:text="${session.userName}"></p> Thank you for your recent purchase.<br> We are honored to gain you as a customer and hope to serve you for a long time.</h4>
-    </div>
-<style>
-    .logo {
-            max-width: 70px;
-          }
-     .text 
-        {
-           text-align: center;
-            font-size: 15px;
-            width: 100%;
-        } 
-</style>
+		<br><br><br><br><br>
+		<h4 style="color: black">Hi, <p th:text="${session.userName}"></p> Thank you for your recent purchase.<br> We are honored to gain you
+			as a customer and hope to serve you for a long time.</h4>
+	</div>
+	<style>
+		body {
+			background: url(https://img.freepik.com/free-photo/young-beautiful-lady-going-shopping-holding-bags-smiling-excited-buying-with-discounts-standi_1258-124344.jpg?w=2000) no-repeat center center fixed;
+			background-size: cover ;
+		}
+		.logo {
+			max-width: 70px;
+		}
+
+		.text {
+		   background-color: rgba(0,0,0,.5);
+			text-align: center;
+			font-size: 15px;
+			width: 100%;
+		}
+	</style>
 </body>
 </html>

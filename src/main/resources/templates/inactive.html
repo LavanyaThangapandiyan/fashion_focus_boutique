@@ -4,18 +4,22 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
 <head>
 	<meta charset="ISO-8859-1">
-	<title>My Cart</title>
+	<title>In active</title>
 </head>
+
 <body>
 
 	<header>
 		<div class="tab">
 			<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #740074">
+				<img alt="logo"
+					src="https://t3.ftcdn.net/jpg/02/94/87/50/360_F_294875066_WmW95xUPQ4R51in63vIcKogyq1LX8ROV.jpg"
+					class="logo" />
 				<a href="" class="navbar-brand">Fashion Focus Boutique</a>
 				<div class="topnav-right">
 					<a th:href="@{/myorder}" class="navbar-brand">My Order</a>
-					<a th:href="@{/}" class="navbar-brand">Log Out</a>
 					<a th:href="@{/mycart}" class="navbar-brand">active Cart</a>
+					<a th:href="@{/}" class="navbar-brand">Log Out</a>
 				</div>
 			</nav>
 		</div>
@@ -24,7 +28,7 @@
 	<br><br><br>
 	<h2>In Active Cart List</h2>
 	<br>
-	<table  class="table table-bordered" aria-describedby="mydesc">
+	<table class="table table-bordered" aria-describedby="mydesc">
 		<thead style="background-color: purple">
 			<tr>
 				<th style="color:white; font-size:14pt;"> Name </th>
@@ -51,9 +55,14 @@
 		</tbody>
 	</table><br><br>
 	<style>
-		h2{
+		.logo {
+			max-width: 70px;
+		}
+
+		h2 {
 			text-align: center;
 		}
+
 		.order {
 			text-align: center;
 		}

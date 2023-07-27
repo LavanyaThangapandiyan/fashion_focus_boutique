@@ -94,7 +94,7 @@ public class UserDao implements UserInterface {
 			String dbpass = userModel.getPassword();
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 			boolean match = encoder.matches(password, dbpass);
-			if (check == "true" && match) 
+			if (check.equals("true")&& match) 
 			{
 				return 2;
 			} else if (match) {
