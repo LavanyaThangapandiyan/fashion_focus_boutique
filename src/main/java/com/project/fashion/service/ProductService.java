@@ -8,7 +8,6 @@ import com.project.fashion.exception.ExistCategoryException;
 import com.project.fashion.exception.ExistProductException;
 import com.project.fashion.model.Category;
 import com.project.fashion.model.Product;
-import com.project.fashion.model.Sales;
 @Service
 
 public class ProductService 
@@ -89,7 +88,11 @@ public class ProductService
 	{
 		productDao.activeCategoryDetails(id);
 	}
-	
+	public long getCurrentMonthSales()
+	{
+		return productDao.getCurrentMonthSales();
+		
+	}
 	
 	public long getSalesList()
 	{

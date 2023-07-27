@@ -170,6 +170,8 @@ public class ProductController {
 	{
 		long salesList = productService.getSalesList();
 		model.addAttribute("salesamount",salesList);
+		long currentMonthSales = productService.getCurrentMonthSales();
+		model.addAttribute("currentMonthSales",currentMonthSales);
 		return "sales";
 	}
 }

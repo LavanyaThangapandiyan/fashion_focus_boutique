@@ -30,5 +30,8 @@ public interface ProductInterface
 	public List<Category> getCategoryName();
 	public void updateCategoryName(int id, String name);
 	public Category findCategoryById(int id);
+	
+	public long getCurrentMonthSales();
+	public long getSalesList();
 
 }

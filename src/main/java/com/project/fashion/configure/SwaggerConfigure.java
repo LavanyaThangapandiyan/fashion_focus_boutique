@@ -1,6 +1,5 @@
 package com.project.fashion.configure;
 
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -18,27 +17,5 @@ public class SwaggerConfigure
 	         return new Docket(DocumentationType.SWAGGER_2)
 	                    .select().apis(RequestHandlerSelectors.basePackage("com.project.fashion.controller"))
 	                    .paths(PathSelectors.any()).build();
-	    };
-	    
-	    /*public Docket api() {
-	        return new Docket(DocumentationType.SWAGGER_2)
-	                .select()
-	                .apis(RequestHandlerSelectors.basePackage("com.project.fashion.controller"))
-	                .paths(PathSelectors.any())
-	                .build()
-	                .apiInfo(apiInfo())
-	                .securitySchemes(Arrays.asList(apiKey()));
 	    }
-	    private ApiInfo apiInfo() {
-	        return new ApiInfoBuilder()
-	                .title("My API Documentation")
-	                .description("Welcome to Online Fashion Focus  Boutique")
-	                .version("1.0.0")
-	                .build();
-	    }
-	    private ApiKey apiKey() 
-	    {
-	        return new ApiKey("apiKey", "apiKey", "header");
-	    }*/
-	   
 }
