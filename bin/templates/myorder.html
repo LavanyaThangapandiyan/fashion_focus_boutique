@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org" xml:lang="en"> 
 <head>
     <meta charset="UTF-8">
@@ -63,7 +64,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body">
-                    <img  th:src="'data:images/jpg;base64,' + ${order.image}" style="width: 100%; height: 80%;">
+                    <img alt="" th:src="'data:images/jpg;base64,' + ${order.image}" style="width: 100%; height: 80%;">
                           <input hidden name="userId" th:value="${session.id}">
                           <strong>Order ID:</strong>
                           <span th:text="${order.id}"></span><br>

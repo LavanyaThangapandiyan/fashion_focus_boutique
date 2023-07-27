@@ -1,6 +1,5 @@
 package com.project.fashion.dao;
 
-import java.sql.Date;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -184,14 +183,13 @@ public class ProductDao implements ProductInterface {
 	{
 		/*String getSales="select id,sales_amount,Date from sales";
 		List<Sales> query = jdbcTemplate.query(getSales, new SalesMapper());*/
+		long salesAmount=0;
 		String findMonthlySales="select  SUM(sales_amount) from sales where Date>now() - interval 1 month";
 		List<Sales> query = jdbcTemplate.query(findMonthlySales, new SalesAmountMapper());
 		for(Sales sale:query)
 		{
-			long salesAmount = sale.getSalesAmount();
-			return salesAmount;
+		    salesAmount = sale.getSalesAmount();
 		}
-		return 0;
-		
+		return salesAmount;	
 	}
 }
