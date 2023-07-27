@@ -183,8 +183,10 @@ public class ProductDao implements ProductInterface {
 	{
 		/*String getSales="select id,sales_amount,Date from sales";
 		List<Sales> query = jdbcTemplate.query(getSales, new SalesMapper());*/
+		
 		long salesAmount=0;
-		String findMonthlySales="select  SUM(sales_amount) from sales where Date>now() - interval 1 month";
+		//--Query For Using Only Take Last Month Of Sales
+		String findMonthlySales="select SUM(sales_amount) from sales where month(Date)=month(now())-1";
 		List<Sales> query = jdbcTemplate.query(findMonthlySales, new SalesAmountMapper());
 		for(Sales sale:query)
 		{

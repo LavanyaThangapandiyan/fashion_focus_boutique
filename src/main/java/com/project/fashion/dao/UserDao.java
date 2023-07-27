@@ -80,7 +80,8 @@ public class UserDao implements UserInterface {
 	}
 
 	// --------FindUser-----------
-	public int findUserDetails(User user) throws InvalidEmailException {
+	public int findUserDetails(User user) throws InvalidEmailException
+	{
 		String userEmail = user.getEmail();
 		String password = user.getPassword();
 		String check = valid.adminEmailValidation(userEmail);
@@ -88,11 +89,13 @@ public class UserDao implements UserInterface {
 		List<User> listUser = jdbcTemplate.query(find, new UserMapperSingle(), "Available");
 		List<User> users = listUser.stream().filter(userOne -> userOne.getEmail().equals(user.getEmail()))
 				.collect(Collectors.toList());
-		for (User userModel : users) {
+		for (User userModel : users) 
+		{
 			String dbpass = userModel.getPassword();
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 			boolean match = encoder.matches(password, dbpass);
-			if (userModel != null && check == "true" && match) {
+			if (check == "true" && match) 
+			{
 				return 2;
 			} else if (match) {
 				return 1;

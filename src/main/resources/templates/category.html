@@ -18,7 +18,7 @@
     <p th:text="${exception}"></p>
         <h1>Category List</h1>
         <a th:href="@{/newcategory}" class="btn btn-primary btn-sm mb-3"> Add Category </a>
-        <table border="1" class="table table-striped table-responsive-md">
+        <table border="1" class="table table-striped table-responsive-md" aria-describedby="mydesc">
            <thead>
                 <tr>
                     <th>Category Name</th>
@@ -36,7 +36,7 @@
         </table>
         <br><br>
         <h1>In Active Category List</h1>
-        <table border="1" class="table table-striped table-responsive-md">
+        <table border="1" class="table table-striped table-responsive-md" aria-describedby="mydesc">
            <thead>
                 <tr>
                     <th>Category Name</th>
