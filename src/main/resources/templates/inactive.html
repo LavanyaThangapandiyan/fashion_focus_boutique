@@ -1,0 +1,83 @@
+<html xmlns:th="https://thymeleaf.org" xml:lang="en">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>My Cart</title>
+</head>
+<body>
+
+	<header>
+		<div class="tab">
+			<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #740074">
+				<a href="" class="navbar-brand">Fashion Focus Boutique</a>
+				<div class="topnav-right">
+					<a th:href="@{/myorder}" class="navbar-brand">My Order</a>
+					<a th:href="@{/}" class="navbar-brand">Log Out</a>
+					<a th:href="@{/mycart}" class="navbar-brand">active Cart</a>
+				</div>
+			</nav>
+		</div>
+		</div>
+	</header>
+	<br><br><br>
+	<h2>In Active Cart List</h2>
+	<br>
+	<table id="example" class="table table-bordered">
+		<thead style="background-color: purple">
+			<tr>
+				<th style="color:white; font-size:14pt;"> Name </th>
+				<th style="color:white; font-size:14pt;"> Price </th>
+				<th style="color:white; font-size:14pt;"> Type </th>
+				<th style="color:white; font-size:14pt;"> Size </th>
+				<th style="color:white; font-size:14pt;"> Quantity </th>
+				<th style="color:white; font-size:14pt;"> Total Amount </th>
+				<th style="color:white; font-size:14pt;"> Actions </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="cart, itemStat : *{inactivelist}">
+			<tr th:each="cart : ${inactivelist}">
+				<td><span th:text="${cart.productName}"> Name </span></td>
+				<td>Rs.<span th:text="${cart.price}"> Price </span></td>
+				<td><span th:text="${cart.product_type}"> Type </span></td>
+				<td><span th:text="${cart.size}"> Size </span></td>
+				<td><span th:text="${cart.quantity}">Quantity</td>
+				<td><span th:text="${cart.amount}">Total Amount</span></td>
+				<td><a th:href="@{/activecart/{id}(id=${cart.id})}" class="btn btn-danger">Add cart</a>
+				</td>
+			</tr>
+		</tbody>
+	</table><br><br>
+	<style>
+		h2{
+			text-align: center;
+		}
+		.order {
+			text-align: center;
+		}
+
+		.button {
+			float: right;
+			background-color: #792099;
+			border: 1px solid #792099;
+			cursor: pointer;
+			font-size: 20px;
+			width: 10%;
+		}
+
+		.order button {
+			background-color: #792099;
+			color: white;
+			border: 1px solid #792099;
+			border-radius: 5px;
+			padding: 10px;
+			margin: 10px 0px;
+			cursor: pointer;
+			font-size: 20px;
+			width: 20%;
+		}
+	</style>
+</body>
+
+</html>

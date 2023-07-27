@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" xml:lang="en">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Product List</title>
+</head>
+
+<body>
+	<header>
+		<div class="tab">
+			<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #740074">
+				<img alt="logo"
+					src="https://t3.ftcdn.net/jpg/02/94/87/50/360_F_294875066_WmW95xUPQ4R51in63vIcKogyq1LX8ROV.jpg"
+					class="logo" />
+				<a href="" class="navbar-brand">Fashion Focus Boutique</a>
+			</nav>
+			<div class="topnav-right">
+				<a th:href="@{/}" class="navbar-brand">Log Out</a>
+			</div>
+			</nav>
+		</div>
+	</header>
+	<a th:href="@{/product}" class="btn btn-primary btn-sm mb-3"> Add Product </a>
+	<table id="example" class="table table-bordered">
+		<thead style="background-color: purple">
+			<tr>
+				<th style="color:white; font-size:14pt;">image</th>
+				<th style="color:white; font-size:14pt;"> Name </th>
+				<th style="color:white; font-size:14pt;"> Price </th>
+				<th style="color:white; font-size:14pt;"> Type </th>
+				<th style="color:white; font-size:14pt;"> Size </th>
+				<th style="color:white; font-size:14pt;"> Quantity </th>
+				<th style="color:white; font-size:14pt;"> Fabric </th>
+				<th style="color:white; font-size:14pt;"> Gender </th>
+				<th style="color:white; font-size:14pt;"> Actions </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="product, itemStat : *{allproduct}">
+			<tr th:each="product : ${allproduct}">
+				<td>
+					<img alt="" th:src="'data:images/jpg;base64,' + ${product.image}" style="width: 100px;">
+				</td>
+				<td><span th:text="${product.name}"> Name </span></td>
+				<td><span th:text="${product.price}"> Price </span></td>
+				<td><span th:text="${product.type}"> Type </span></td>
+				<td><span th:text="${product.size}"> Size </span></td>
+				<td><span th:text="${product.quantity}">Quantity</span></td>
+				<td><span th:text="${product.fabric}"> Fabric </span></td>
+				<td><span th:text="${product.gender}"> Gender </span></td>
+				<td> <a th:href="@{/update/{id}(id=${product.id})}" class="btn btn-primary">Update</a>
+					<a th:href="@{/deleteproduct/{id}(id=${product.id})}" class="btn btn-danger">Click to In Active</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#example').DataTable();
+		});
+	</script>
+	<br><br>
+	<table class="table table-bordered">
+		<thead style="background-color: purple">
+			<tr>
+				<th style="color:white; font-size:14pt;"> Name </th>
+				<th style="color:white; font-size:14pt;"> Price </th>
+				<th style="color:white; font-size:14pt;"> Type </th>
+				<th style="color:white; font-size:14pt;"> Size </th>
+				<th style="color:white; font-size:14pt;"> Quantity </th>
+				<th style="color:white; font-size:14pt;"> Fabric </th>
+				<th style="color:white; font-size:14pt;"> Gender </th>
+				<th style="color:white; font-size:14pt;"> Actions </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="product, itemStat : *{inActiveproducts}">
+			<tr th:each="product : ${inActiveproducts}">
+				<td><span th:text="${product.name}"> Name </span></td>
+				<td><span th:text="${product.price}"> Price </span></td>
+				<td><span th:text="${product.type}"> Type </span></td>
+				<td><span th:text="${product.size}"> Size </span></td>
+				<td><span th:text="${product.quantity}">Quantity</span></td>
+				<td><span th:text="${product.fabric}"> Fabric </span></td>
+				<td><span th:text="${product.gender}"> Gender </span></td>
+				<td> <a th:href="@{/update/{id}(id=${product.id})}" class="btn btn-primary">Update</a>
+					<a th:href="@{/active/{id}(id=${product.id})}" class="btn btn-danger">Click to Active</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<style>
+		.logo {
+			max-width: 70px;
+		}
+		th,
+		td {
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		.topnav-right {
+			float: right;
+		}
+	</style>
+
+</body>
+
+</html>

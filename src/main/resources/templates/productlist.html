@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org" xml:lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="./css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<header>
+		<div class="tab">
+			<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #740074">
+				<a href="" class="navbar-brand">Fashion Focus Boutique</a>
+				<a th:href="@{/mycart}" class="navbar-brand">My Cart</a>
+				<a th:href="@{/history}" class="navbar-brand">Order History</a>
+
+				<div class="topnav-right">
+					<a th:href="@{/mywish}" class="navbar-brand"><i class="fa fa-heart-o"></i></a>
+				</div>
+				<a th:href="@{/myorder}" class="navbar-brand">My Orders</a>
+				<a th:href="@{/}" class="navbar-brand">Log Out</a>
+			</nav>
+		</div>
+	</header>
+	<div class="tab">
+		<button class="tablinks" onclick="openCity(event, 'ethnic')">Women Ethnic</button>
+		<button class="tablinks" onclick="openCity(event, 'western')">Women Western</button>
+		<button class="tablinks" onclick="openCity(event, 'men')">Men</button>
+		<button class="tablinks" onclick="openCity(event, 'kids')">Kids</button>
+	</div>
+	<!-- Tab content -->
+	<div id="ethnic" class="tabcontent">
+		<h4 style="color:purple;">All Women Ethnic</h4>
+		<table>
+			<thead>
+				<th>All Sarees</th>
+				<th>Kurtis</th>
+				<th>Kurta Sets</th>
+				<th>Suits & Dress Material</th>
+			</thead>
+			<tbody>
+				<tr>
+					<form id="form" th:action="@{/silksaree}" th:object="${product}" method="Get">
+						<td> <button type="submit">Silk Sarees</button></td>
+					</form>
+					<form id="form" th:action="@{/rayonkurti}" th:object="${product}" method="Get">
+						<td> <button type="submit">Rayon Kurtis</button></td>
+					</form>
+					<form id="form" th:action="@{/allkurtas}" th:object="${product}" method="Get">
+						<td> <button type="submit">All Kurta Sets</button></td>
+					</form>
+					<form id="form" th:action="@{/duppata}" th:object="${product}" method="Get">
+						<td> <button type="submit">Dupattas</button></td>
+					</form>
+				</tr>
+				<tr>
+					<form id="form" th:action="@{/cottonsaree}" th:object="${product}" method="Get">
+						<td> <button type="submit">Cotton Sarees</button></td>
+					</form>
+					<form id="form" th:action="@{/embroidery}" th:object="${product}" method="Get">
+						<td> <button type="submit">Embroidered Kurtis</button></td>
+					</form>
+					<form id="form" th:action="@{/lehanga}" th:object="${product}" method="Get">
+						<td> <button type="submit">Lehanga</button></td>
+					</form>
+				</tr>
+				<tr>
+					<form id="form" th:action="@{/georgette}" th:object="${product}" method="Get">
+						<td> <button type="submit">Georgette Sarees</button></td>
+					</form>
+					<form id="form" th:action="@{/cottonkurti}" th:object="${product}" method="Get">
+						<td> <button type="submit">Cotton Kurtis</button></td>
+					</form>
+					<form id="form" th:action="@{/gowns}" th:object="${product}" method="Get">
+						<td> <button type="submit">Gown</button></td>
+					</form>
+				</tr>
+				<tr>
+					<form id="form" th:action="@{/filter}" th:object="${product}" method="Get">
+						<td> <button type="submit">Chiffon Sarees</button></td>
+					</form>
+					<form id="form" th:action="@{/anarkali}" th:object="${product}" method="Get">
+						<td> <button type="submit">Anarkali kurti</button></td>
+					</form>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div id="western" class="tabcontent">
+		<h4 style="color:purple;">All Women Western</h4>
+		<table>
+			<thead>
+				<th>Top Wear</a></th>
+				<th>Bottom Wear</a></th>
+				<th>Sleep wear</a></th>
+			</thead>
+			<tbody>
+				<tr>
+					<form id="form" th:action="@{/tops}" th:object="${product}" method="Get">
+						<td> <button type="submit">Tops</button></td>
+					</form>
+					<form id="form" th:action="@{/jeans}" th:object="${product}" method="Get">
+						<td> <button type="submit">Jeans</button></td>
+					</form>
+					<form id="form" th:action="@{/nightsuits}" th:object="${product}" method="Get">
+						<td> <button type="submit">Night Suits</button></td>
+					</form>
+				</tr>
+				<tr>
+					<form id="form" th:action="@{/jeggins}" th:object="${product}" method="Get">
+						<td> <button type="submit">Jeggins</button></td>
+					</form>
+					<form id="form" th:action="@{/plazzo}" th:object="${product}" method="Get">
+						<td> <button type="submit">Plazzos</button></td>
+					</form>
+					<form id="form" th:action="@{/shorts}" th:object="${product}" method="Get">
+						<td> <button type="submit">Shorts</button></td>
+					</form>
+				</tr>
+				<tr>
+					<form id="form" th:action="@{/sweaters}" th:object="${product}" method="Get">
+						<td> <button type="submit">Sweaters</button></td>
+					</form>
+				</tr>
+				<tr>
+					<form id="form" th:action="@{/jumpsuits}" th:object="${product}" method="Get">
+						<td> <button type="submit">Jump Suits</button></td>
+					</form>
+					<td></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
+	<div id="men" class="tabcontent">
+		<table>
+			<thead>
+				<th>Top Wear</th>
+				<th>Bottom Wear</th>
+			</thead>
+			<tbody>
+				<tr>
+					<form id="form" th:action="@{/tshirt}" th:object="${product}" method="Get">
+						<td> <button type="submit">Tshirts</button></td>
+					</form>
+					<form id="form" th:action="@{/mentrack}" th:object="${product}" method="Get">
+						<td> <button type="submit">Track pants</button></td>
+					</form>
+				</tr>
+				<tr>
+					<form id="form" th:action="@{/shirt}" th:object="${product}" method="Get">
+						<td> <button type="submit">Shirts</button></td>
+					</form>
+					<form id="form" th:action="@{/jeansmen}" th:object="${product}" method="Get">
+						<td> <button type="submit">Jeans</button></td>
+					</form>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</div>
+	<div id="kids" class="tabcontent">
+		<table>
+			<form id="form" th:action="@{/kids}" th:object="${product}" method="Get">
+				<td> <button type="submit">All Dresses</button></td>
+			</form>
+			</tbody>
+		</table>
+	</div>
+	<div class="text">
+		<h3 style="color: #740074">Delivers Excellent Customer Service at our Boutique</h3><br>
+		<h4 style="color: #740074">Lowest Prices Best Quality Shopping.</h4>
+		</p>
+	</div>
+	<br>
+	<div class="font">
+		<h1>Welcome</h1>
+		<p th:text="${session.userName}"></p>
+	</div>
+	<div class="container py-5">
+		<h1 class="text-center">Popular Product</h1>
+		<div class="row row-cols-1 row-cols-md-3 g-4 py-5">
+			<tr th:each="product, itemStat : *{card}">
+			<tr th:each="product : ${card}">
+				<div class="col">
+					<form th:action="@{/addcart}" method="GET">
+						<div class="card">
+							<img alt="" th:src="'data:images/jpg;base64,' + ${product.image}"
+								style="width: 100%; height: 80%;">
+							<div class="card-body">
+								<a th:href="@{/addwish/{id}(id=${product.id})}">Add Wishlist<i class="fa fa-heart-o"
+										id="heart" onclick="changeColor()"></i></a>
+								<input hidden name="userId" th:value="${session.id}">
+								<input hidden name="id" th:value="${product.id}">
+								<p><input hidden name="productname" th:value="${product.name}" readonly></p>
+								<p><input hidden name="price" id="price" th:value="${product.price}" readonly></p>
+								<p><input hidden name="type" id="type" th:value="${product.type}" readonly></p>
+								<p><input hidden name="fabric" id="fabric" th:value="${product.fabric}" readonly></p>
+								<h3>Name : <span th:text="${product.name}"></span> </h3>
+								<h3>Rs.<span th:text="${product.price}"></span></h3>
+								<p>Type : <span th:text="${product.type}"> </span></p>
+								<p>Size : <span th:text="${product.size}"> </span></p>
+								<p>Fabric : <span th:text="${product.fabric}"> </span></p>
+								<p>Gender : <span th:text="${product.gender}"> </span></p>
+								<label><b>Size</b></label><br>
+								<input type="checkbox" value="S" id="sz" name="size"> S
+								<input type="checkbox" value="M" id="sz" name="size"> M
+								<input type="checkbox" value="L" id="sz" name="size"> L
+								<input type="checkbox" value="XL" id="sz" name="size"> XL
+								<input type="checkbox" value="XXL" id="sz" name="size"> XXL
+								<input type="checkbox" value="XXXl" id="sz" name="size"> XXXL
+								<input type="checkbox" value="ALL" id="sz" name="size"> ALL
+								<label for="type"><b>Quantity</b></label>
+								<input type="number" min="1" id="number" name="quantity" value="1" />
+								<div class="button">
+									<button type="submit">Buy Now</button>
+								</div>
+							</div>
+						</div>
+				</div>
+				</form>
+			</tr>
+			</tr>
+
+			<script>
+				function openCity(evt, cityName) {
+					// Declare all variables
+					var i, tabcontent, tablinks;
+
+					// Get all elements with class="tabcontent" and hide them
+					tabcontent = document.getElementsByClassName("tabcontent");
+					for (i = 0; i < tabcontent.length; i++) {
+						tabcontent[i].style.display = "none";
+					}
+
+					// Get all elements with class="tablinks" and remove the class "active"
+					tablinks = document.getElementsByClassName("tablinks");
+					for (i = 0; i < tablinks.length; i++) {
+						tablinks[i].className = tablinks[i].className.replace(" active", "");
+					}
+
+					// Show the current tab, and add an "active" class to the button that opened the tab
+					document.getElementById(cityName).style.display = "block";
+					evt.currentTarget.className += " active";
+				}
+				const previous = document.querySelector('.previous');
+				const next = document.querySelector('.next');
+				const images = document.querySelector('.slider-carousel').children;
+				const totalImages = images.length;
+				let currentIndex = 0;
+
+
+				// Event Listeners to previous and next buttons
+				previous.addEventListener('click', () => {
+					previousImage()
+				})
+
+				next.addEventListener('click', () => {
+					nextImage();
+				})
+
+				setInterval(() => {
+					nextImage();
+				}, 1000);
+
+			</script>
+
+
+			<style>
+				.tab {
+					overflow: hidden;
+					border: 1px solid #ccc;
+					background-color: #f1f1f1;
+				}
+
+				/* Style the buttons that are used to open the tab content */
+				.tab button {
+					background-color: inherit;
+					float: left;
+					border: none;
+					outline: none;
+					cursor: pointer;
+					padding: 14px 16px;
+					transition: 0.3s;
+				}
+
+				/* Change background color of buttons on hover */
+				.tab button:hover {
+					background-color: #94149f;
+				}
+
+				/* Create an active/current tablink class */
+				.tab button.active {
+					background-color: #94149f;
+				}
+
+				/* Style the tab content */
+				.tabcontent {
+					display: none;
+					padding: 6px 12px;
+					border: 1px solid #ccc;
+					border-top: none;
+				}
+
+				/* Style the tab */
+				table {
+					border-collapse: separate;
+					border-spacing: 50px 0;
+				}
+
+				td {
+					padding: 10px 0;
+				}
+
+				.tab {
+					overflow: hidden;
+					border: 1px solid #ccc;
+					background-color: #f1f1f1;
+				}
+
+				/* Style the buttons that are used to open the tab content */
+				.tab button {
+					background-color: inherit;
+					float: left;
+					border: none;
+					outline: none;
+					cursor: pointer;
+					padding: 14px 16px;
+					transition: 0.3s;
+				}
+
+				/* Change background color of buttons on hover */
+				.tab button:hover {
+					background-color: #94149f;
+				}
+
+				/* Create an active/current tablink class */
+				.tab button.active {
+					background-color: #94149f;
+				}
+
+				/* Style the tab content */
+				.tabcontent {
+					display: none;
+					padding: 6px 12px;
+					border: 1px solid #ccc;
+					border-top: none;
+				}
+
+
+
+				.font {
+					text-align: center;
+				}
+
+				.topnav-right {
+					float: right;
+				}
+
+				* {
+					padding: 0;
+					margin: 0;
+					box-sizing: border-box;
+				}
+
+				body {
+					background-color: #f9f6f2;
+				}
+
+				.card-img-top {
+					border-radius: 50px;
+					padding: 20px;
+				}
+
+				.card {
+					border-radius: 30px;
+					box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+					height: 100%
+				}
+
+				.card-body {
+					padding: 25px;
+					margin-top: -15px;
+				}
+
+				.btn-primary {
+					border-radius: 50px;
+					width: 120px;
+				}
+
+				.btn-primary:hover {
+					background-color: black;
+					border: none;
+				}
+
+				h3,
+				h5 {
+					color: #740074;
+				}
+
+				.card button {
+					background-color: #792099;
+					color: white;
+					border: 1px solid #792099;
+					border-radius: 5px;
+					padding: 10px;
+					margin: 10px 0px;
+					cursor: pointer;
+					font-size: 20px;
+					width: 100%;
+				}
+			</style>
