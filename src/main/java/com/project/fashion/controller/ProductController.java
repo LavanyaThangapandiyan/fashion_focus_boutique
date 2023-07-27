@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.project.fashion.exception.ExistCategoryException;
 import com.project.fashion.exception.ExistProductException;
 import com.project.fashion.model.Category;
@@ -167,12 +166,10 @@ public class ProductController {
 	}
 	
 	@GetMapping(path = "/sales")
-	public String showSales(Model model) throws JsonProcessingException 
+	public String showSales(Model model)
 	{
-		model.addAttribute("salesList",productService.getSalesList(model));
+		long salesList = productService.getSalesList();
+		model.addAttribute("salesamount",salesList);
 		return "sales";
 	}
-
-	
-
 }

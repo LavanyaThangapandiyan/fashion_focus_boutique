@@ -400,11 +400,19 @@ public class UserDao implements UserInterface {
 				payment.getCardNumber(), payment.getCvv(), payment.getMonth(), payment.getYear(), today };
 		int numberOfRows = jdbcTemplate.update(insert, details);
 		logger.info("Payment Inserted Rows : " + numberOfRows);
+		 
+		 //---Complete Payment And add to Sales Table---
+		 String insertSales="insert into sales (sales_amount,Date)values(?,?)";
+		 Object[] inserts= {payment.getAmount(),today};
+		 int update2 = jdbcTemplate.update(insertSales,inserts);
+		 logger.info("Inserted Sales Details : "+update2);
 		
+		 //--After Order Process Complete Delete Orders Details---
 		  String delete="delete from orders where customer_id=?"; 
 		  Object[] detail={userId}; int update = jdbcTemplate.update(delete,detail);
 		  logger.info(" After Payment Clear Orders : "+update);
 		  
+		  //---After Order Empty to  Cart----
 		  String clearCart="delete from cart where customer_id=?";
 		  Object[] deleteCart={userId};
 		  int deletesCart=jdbcTemplate.update(clearCart,deleteCart);

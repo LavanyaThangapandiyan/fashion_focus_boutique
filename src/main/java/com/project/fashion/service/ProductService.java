@@ -2,10 +2,7 @@ package com.project.fashion.service;
 
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.project.fashion.dao.ProductDao;
 import com.project.fashion.exception.ExistCategoryException;
 import com.project.fashion.exception.ExistProductException;
@@ -93,12 +90,9 @@ public class ProductService
 		productDao.activeCategoryDetails(id);
 	}
 	
-	public void saveSalesDetails(int productId,int quantity)
+	
+	public long getSalesList()
 	{
-		productDao.saveSalesDetails(productId, quantity);
-	}
-	public List<Sales> getSalesList(Model model) throws JsonProcessingException
-	{
-		return productDao.getSalesList(model);
+		return productDao.getSalesList();
 	}
 }

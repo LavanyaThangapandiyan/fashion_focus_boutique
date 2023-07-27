@@ -4,38 +4,23 @@ import java.sql.Date;
 
 public class Sales {
 	
-	
+	private int id;
+	private long salesAmount;
+	private Date date;
 	public Sales() {
 		super();
 	}
-	private int id;
-	private String categoryName;
-	private int productId;
-	private int quantity;
-	private Date date;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getCategoryName() {
-		return categoryName;
+	public long getSalesAmount() {
+		return salesAmount;
 	}
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
-	public int getProductId() {
-		return productId;
-	}
-	public void setProductId(int productId) {
-		this.productId = productId;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setSalesAmount(long salesAmount) {
+		this.salesAmount = salesAmount;
 	}
 	public Date getDate() {
 		return date;
@@ -45,16 +30,14 @@ public class Sales {
 	}
 	@Override
 	public String toString() {
-		return "Sales [id=" + id + ", categoryName=" + categoryName + ", productId=" + productId + ", quantity="
-				+ quantity + ", date=" + date + "]";
+		return "Sales [id=" + id + ", salesAmount=" + salesAmount + ", date=" + date + "]";
 	}
-	public Sales(int id, String categoryName, int productId, int quantity, Date date) {
+	public Sales(int id, long salesAmount, Date date) {
 		super();
 		this.id = id;
-		this.categoryName = categoryName;
-		this.productId = productId;
-		this.quantity = quantity;
+		this.salesAmount = salesAmount;
 		this.date = date;
 	}
-
+	
+	
 }

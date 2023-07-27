@@ -38,6 +38,7 @@ public class UserController {
 	@GetMapping("/")
 	public String showHome(HttpSession session) {
 		session.invalidate();
+		productService.getSalesList();
 		return "index";
 	}
 

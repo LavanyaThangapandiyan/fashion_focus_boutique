@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org" xml:lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
@@ -9,11 +8,13 @@
 	<link href="./css/style.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-
 <body>
 	<header>
 		<div class="tab">
 			<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #740074">
+				<img alt="logo"
+					src="https://t3.ftcdn.net/jpg/02/94/87/50/360_F_294875066_WmW95xUPQ4R51in63vIcKogyq1LX8ROV.jpg"
+					class="logo" />
 				<a href="" class="navbar-brand">Fashion Focus Boutique</a>
 				<a th:href="@{/mycart}" class="navbar-brand">My Cart</a>
 				<a th:href="@{/history}" class="navbar-brand">Order History</a>
@@ -169,11 +170,12 @@
 	</div>
 	<div id="kids" class="tabcontent">
 		<table>
-			<form id="form" th:action="@{/kids}" th:object="${product}" method="Get">
-				<td> <button type="submit">All Dresses</button></td>
-			</form>
-			</tbody>
-		</table>
+			<tr>
+				<form id="form" th:action="@{/kids}" th:object="${product}" method="Get">
+					<td> <button type="submit">All Dresses</button></td>
+				</form>
+			</tr>
+	   </table>
 	</div>
 	<div class="text">
 		<h3 style="color: #740074">Delivers Excellent Customer Service at our Boutique</h3><br>
@@ -182,11 +184,11 @@
 	</div>
 	<br>
 	<div class="font">
-		<h1>Welcome</h1>
+		<h3>Welcome</h3>
 		<p th:text="${session.userName}"></p>
 	</div>
 	<div class="container py-5">
-		<h1 class="text-center">Popular Product</h1>
+		<h2 class="text-center">Popular Product</h2>
 		<div class="row row-cols-1 row-cols-md-3 g-4 py-5">
 			<tr th:each="product, itemStat : *{card}">
 			<tr th:each="product : ${card}">
@@ -272,9 +274,15 @@
 				}, 1000);
 
 			</script>
-
-
 			<style>
+				.logo {
+					max-width: 70px;
+				}
+
+				.text {
+					text-align: center;
+				}
+
 				.tab {
 					overflow: hidden;
 					border: 1px solid #ccc;
@@ -354,9 +362,6 @@
 					border: 1px solid #ccc;
 					border-top: none;
 				}
-
-
-
 				.font {
 					text-align: center;
 				}
