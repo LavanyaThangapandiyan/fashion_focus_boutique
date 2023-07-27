@@ -2,12 +2,9 @@
 <html xmlns:th="https://thymeleaf.org" xml:lang="en"> 
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-	 <link rel="stylesheet" href="css/tab.css"> 
 <head>
 <meta charset="ISO-8859-1">
-<title>Item-Form</title>
+<title>Product-Form</title>
 </head>
 <body>
 <header>
@@ -15,10 +12,9 @@
       <nav class="navbar navbar-expand-md navbar-dark"
 			style="background-color: #740074">
             <span id="open" onclick="openNav()">Boutique</span>
+            <img alt="logo" src="https://t3.ftcdn.net/jpg/02/94/87/50/360_F_294875066_WmW95xUPQ4R51in63vIcKogyq1LX8ROV.jpg"
+                class="logo" />
 			<a href="" class="navbar-brand">Fashion Focus Boutique</a>
-			<a th:href="login.html" class="navbar-brand">Men</a>
-			<a th:href="login.html" class="navbar-brand">Women</a>
-			<a th:href="login.html" class="navbar-brand">Kids</a>
 			<a th:href="@{/}" class="navbar-brand">Log Out</a>
       </nav>
 </div>		
@@ -57,10 +53,11 @@ function closeNav() {
   document.getElementById('number').value = value;
 }
 
-function decreaseValue() {
+function decreaseValue()
+ {
   var value = parseInt(document.getElementById('number').value, 10);
   value = isNaN(value) ? 0 : value;
-  value <1? value = 1 : '';
+  if(value>1)
   value--;
   document.getElementById('number').value = value;
 }
@@ -115,7 +112,7 @@ function decreaseValue() {
      <label for="type"><b>Quantity</b></label>
 		<div class="quantity">
         <div class="value-button" id="decrease" onclick="decreaseValue()" value="Decrease Value"><b>-</b></div>
-        <input type="number" id="number" name="quantity" value="0" />
+        <input type="number" id="number" min="1" name="quantity" value="1" />
         <div class="value-button" id="increase" onclick="increaseValue()" value="Increase Value"><b>+</b></div>
     </div><br>
        <label for="type"><b>Upload Image</b></label>
@@ -127,6 +124,10 @@ function decreaseValue() {
 	</form>
 </div>
 <style>
+ .logo {
+            max-width: 70px;
+        }
+
  #error {
     text-align: center;
   color:red;
