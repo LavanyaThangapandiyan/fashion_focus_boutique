@@ -114,6 +114,7 @@ public class UserController {
 	}
 
 	// ---Handling Exist Mobile Number Exception----
+	@ExceptionHandler(ExistMobileException.class)
 	public String existMobileNumberException(ExistMobileException existMobile, Model model) {
 		model.addAttribute("errormessage", "Mobile Number Already Exist.");
 		return "error";

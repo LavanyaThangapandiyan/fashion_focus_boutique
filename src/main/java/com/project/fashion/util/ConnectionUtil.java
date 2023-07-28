@@ -4,7 +4,14 @@ import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-public class ConnectionUtil {
+import com.project.fashion.exception.DataSourceException;
+
+public class ConnectionUtil 
+{
+	private ConnectionUtil() throws DataSourceException
+	{
+		throw new DataSourceException("Connection Util Class");
+	}
 
 	private static DataSource getDataSource()
 	{

@@ -103,24 +103,7 @@ public class Cart {
 	public Cart() {
 		super();
 	}
-	public Cart(String image, int id, int orderId, int customerId, int productId, String productName, int price,
-			String size, String productType, String fabric, String gender, int quantity, int amount, String status) {
-		super();
-		this.image = image;
-		this.id = id;
-		this.orderId = orderId;
-		this.customerId = customerId;
-		this.productId = productId;
-		this.productName = productName;
-		this.price = price;
-		this.size = size;
-		this.productType = productType;
-		this.fabric = fabric;
-		this.gender = gender;
-		this.quantity = quantity;
-		this.amount = amount;
-		this.status = status;
-	}
+	
 	@Override
 	public String toString() {
 		return "Cart [image=" + image + ", id=" + id + ", orderId=" + orderId + ", customerId=" + customerId
