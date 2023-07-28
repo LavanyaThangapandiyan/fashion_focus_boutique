@@ -34,9 +34,7 @@ public class UserController {
 	String email;
 
 	@GetMapping("/")
-	public String showHome(HttpSession session) {
-		session.invalidate();
-		productService.getSalesList();
+	public String showHome() {
 		return "index";
 	}
 
@@ -306,5 +304,20 @@ public class UserController {
 		int userId = (int) session.getAttribute("id");
 		model.addAttribute("historylist", userService.getOrderHistoryList(userId));
 		return "history";
+	}
+	
+	@GetMapping("/logout")
+	public String getLogOutRequest(Model model,HttpSession session)
+	{
+		
+		return "logoutpopup";
+		
+	}
+	
+	@GetMapping("/logoutland")
+	public String getLogoutConfirmation(HttpSession session)
+	{
+		session.invalidate();
+		return "/";
 	}
 }
