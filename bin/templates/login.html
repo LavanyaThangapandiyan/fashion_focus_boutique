@@ -100,7 +100,7 @@
 			const validateEmail = (email) => {
 				return String(email)
 					.toLowerCase()
-					.match(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b^$/);
+					.match(/^\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b$/);
 			};
 		}
 	</script>
@@ -117,15 +117,12 @@
 			text-indent: 30px;
 		}
 
-		body {
-			font-family: 'Poppins', sans-serif;
-		}
-
 		.logo {
 			max-width: 70px;
 		}
 
 		#form {
+		    font-family: 'Poppins', sans-serif;
 			height: 650px;
 			border-radius: 15px;
 			padding: 30px;
