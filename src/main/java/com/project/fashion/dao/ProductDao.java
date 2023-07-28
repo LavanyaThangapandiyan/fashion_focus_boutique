@@ -27,6 +27,7 @@ public class ProductDao implements ProductInterface {
 	Validation valid = new Validation();
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 	Product product = new Product();
+	String productAvailability="Available";
 
 	// ----Insert Product Details
 	public int saveProductDetails(Product product) throws ExistProductException {
@@ -40,7 +41,7 @@ public class ProductDao implements ProductInterface {
 		boolean fabric = valid.nameValidation(product.getFabric());
 		if (name  && size && fabric) {
 			Object[] details = { productName, product.getPrice(), product.getType(), product.getSize(),
-					product.getQuantity(), fabricName, product.getGender(), product.getImage(), "Available" };
+					product.getQuantity(), fabricName, product.getGender(), product.getImage(), productAvailability };
 			int numberOfRows = jdbcTemplate.update(insert, details);
 			logger.info("Inserted Rows : " + numberOfRows);
 			return 1;
@@ -87,8 +88,8 @@ public class ProductDao implements ProductInterface {
 
 	// --Delete Product---
 	public int deleteProduct(int id) {
-		String delete = "update product set is_available=? where id=?";
-		Object[] details = { "Not Available", id };
+		String delete = "update product set is_available='Not Available' where id=?";
+		Object[] details = {id};
 		int update = jdbcTemplate.update(delete, details);
 		logger.info("Delete Product : " + update);
 		return update;
@@ -97,8 +98,8 @@ public class ProductDao implements ProductInterface {
 	// ---Active Product By Id---
 	public int activeProduct(int id) 
 	{
-		String active = "update product set is_available=? where id=?";
-		Object[] details = { "Available", id };
+		String active = "update product set is_available='Available' where id=?";
+		Object[] details = {id };
 		int update = jdbcTemplate.update(active, details);
 		logger.info("Active Product : " + update);
 		return update;
@@ -118,7 +119,7 @@ public class ProductDao implements ProductInterface {
 			String input = category.getCategoryName();
 			String categoryName = input.substring(0, 1).toUpperCase() + input.substring(1);
 			String save = "insert into category(category_name,is_available)values(?,?)";
-			Object[] details = { categoryName, "Available" };
+			Object[] details = { categoryName, productAvailability };
 			int numberOfRows = jdbcTemplate.update(save, details);
 			logger.info("Inserted Rows : " + numberOfRows);
 		} else
@@ -167,8 +168,8 @@ public class ProductDao implements ProductInterface {
 
 	// --Delete category Details---
 	public int deleteCategoryDetails(int id) {
-		String delete = "update category set is_available=? where id=?";
-		Object[] details = { "Not Available", id };
+		String delete = "update category set is_available='Not Available' where id=?";
+		Object[] details = {id };
 		int deleteRows = jdbcTemplate.update(delete, details);
 		logger.info("Deleted Rows :" + deleteRows);
 		return 1;
@@ -176,8 +177,8 @@ public class ProductDao implements ProductInterface {
 
 	// ---Update Un Active to Active Category ---
 	public int activeCategoryDetails(int id) {
-		String active = "update category set is_available=? where id=?";
-		Object[] details = { "Available", id };
+		String active = "update category set is_available='Available' where id=?";
+		Object[] details = {id };
 		int activeRows = jdbcTemplate.update(active, details);
 		logger.info("Activated Product : " + activeRows);
 		return 1;
