@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org" xml:lang="en">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-
 <head>
 	<meta charset="ISO-8859-1">
 	<title>adminlist</title>
@@ -27,10 +26,12 @@
 		<a th:href="@{/category}">Category List</a>
 		<a th:href="@{/sales}">Sales</a>
 	</div>
+	 <h2 style="color: #740074" style="text-align: center;">Sales Profit Survey!.<h2>
+ 
 	<div class="row">
 		<div class="column">
 			<div class="text">
-				<h2 style="color: #740074"> Last Month Of Sales Percentage! .<h2>
+				<h2 style="color: #740074"> Previous Month Of Sales Profit! .<h2>
 			</div>
 			<div class="circle-wrap">
 				<div class="circle">
@@ -48,7 +49,7 @@
 		</div>
 		<div class="column">
 			<div class="fonts">
-				<h2 style="color: #740074"> Current Month Of Sales Percentage! .<h2>
+				<h2 style="color: #740074"> Current Month Of Sales Profit! .<h2>
 			</div>
 			<div class="circle-wrap">
 				<div class="circle">
@@ -60,6 +61,48 @@
 					</div>
 					<div class="inside-circle">
 						<h2 th:text="${currentMonthSales}"></h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br><br>
+	
+	<h2 style="color: #740074" style="text-align: center;">Sales Quantity ! .<h2>
+	
+	<div class="row">
+		<div class="column">
+			<div class="text">
+				<h2 style="color: #740074"> Last Month Of Sales Quantity! .<h2>
+			</div>
+			<div class="circle-wrap">
+				<div class="circle">
+					<div class="mask full">
+						<div class="fill"></div>
+					</div>
+					<div class="mask half">
+						<div class="fill"></div>
+					</div>
+					<div class="inside-circle">
+						<h2 th:text="${currentMonthProductSalesCount}"></h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="column">
+			<div class="fonts">
+				<h2 style="color: #740074"> Current Month Of Sales Quantity! .<h2>
+			</div>
+			<div class="circle-wrap">
+				<div class="circle">
+					<div class="mask full">
+						<div class="fill"></div>
+					</div>
+					<div class="mask half">
+						<div class="fill"></div>
+					</div>
+					<div class="inside-circle">
+						<h2 th:text="${previousMonthProductSalesCount}"></h2>
 					</div>
 				</div>
 			</div>

@@ -11,9 +11,7 @@ public class CartMapper implements RowMapper<Cart> {
 
 	@Override
 	public Cart mapRow(ResultSet rs, int rowNum) throws SQLException {
-		// TODO Auto-generated method stub
 		Cart cart=new Cart();
-		
 		int id=rs.getInt("id");
 		int customerId=rs.getInt("customer_id");
 		int productId=rs.getInt("product_id");

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org" xml:lang="en">
+
 <head>
 	<!-- Design by foolishdeveloper.com -->
 	<meta charset="UTF-8" />
@@ -8,6 +9,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Sales</title>
 </head>
+
 <body>
 	<header>
 		<div class="tab">
@@ -21,12 +23,12 @@
 		</div>
 	</header><br>
 
-	
+    <h2 style="color: #740074" style="text-align: center;">Sales Profit Survey!.<h2>
  
 	<div class="row">
 		<div class="column">
 			<div class="text">
-				<h2 style="color: #740074"> Last Month Of Sales Percentage! .<h2>
+				<h2 style="color: #740074"> Previous Month Of Sales Profit! .<h2>
 			</div>
 			<div class="circle-wrap">
 				<div class="circle">
@@ -44,7 +46,7 @@
 		</div>
 		<div class="column">
 			<div class="fonts">
-				<h2 style="color: #740074"> Current Month Of Sales Percentage! .<h2>
+				<h2 style="color: #740074"> Current Month Of Sales Profit! .<h2>
 			</div>
 			<div class="circle-wrap">
 				<div class="circle">
@@ -60,31 +62,71 @@
 				</div>
 			</div>
 		</div>
-	  </div>
-
+	</div>
+	<br><br>
 	
+	<h2 style="color: #740074" style="text-align: center;">Sales Quantity ! .<h2>
 	
+	<div class="row">
+		<div class="column">
+			<div class="text">
+				<h2 style="color: #740074"> Last Month Of Sales Quantity! .<h2>
+			</div>
+			<div class="circle-wrap">
+				<div class="circle">
+					<div class="mask full">
+						<div class="fill"></div>
+					</div>
+					<div class="mask half">
+						<div class="fill"></div>
+					</div>
+					<div class="inside-circle">
+						<h2 th:text="${currentMonthProductSalesCount}"></h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="column">
+			<div class="fonts">
+				<h2 style="color: #740074"> Current Month Of Sales Quantity! .<h2>
+			</div>
+			<div class="circle-wrap">
+				<div class="circle">
+					<div class="mask full">
+						<div class="fill"></div>
+					</div>
+					<div class="mask half">
+						<div class="fill"></div>
+					</div>
+					<div class="inside-circle">
+						<h2 th:text="${previousMonthProductSalesCount}"></h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<style media="screen">
+		.column {
+			float: left;
+			width: 50%;
+		}
 
-.column {
-  float: left;
-  width: 50%;
-}
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.row {
-  display: flex;
-}
+		.row {
+			display: flex;
+		}
 
-.column {
-  flex: 50%;
-}
+		.column {
+			flex: 50%;
+		}
+
 		@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,300);
 
 		.logo {

@@ -27,7 +27,7 @@ public class ProductDao implements ProductInterface {
 	Validation valid = new Validation();
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 	Product product = new Product();
-	String productAvailability="Available";
+	String productAvailability = "Available";
 
 	// ----Insert Product Details
 	public int saveProductDetails(Product product) throws ExistProductException {
@@ -39,7 +39,7 @@ public class ProductDao implements ProductInterface {
 		boolean name = valid.nameValidation(productName);
 		boolean size = valid.nameValidation(product.getSize());
 		boolean fabric = valid.nameValidation(product.getFabric());
-		if (name  && size && fabric) {
+		if (name && size && fabric) {
 			Object[] details = { productName, product.getPrice(), product.getType(), product.getSize(),
 					product.getQuantity(), fabricName, product.getGender(), product.getImage(), productAvailability };
 			int numberOfRows = jdbcTemplate.update(insert, details);
@@ -65,7 +65,7 @@ public class ProductDao implements ProductInterface {
 	public List<Product> allProductList() {
 		List<Product> productList;
 		String find = "select id,name,price,category,size,quantity,fabric,gender,image from product where is_available='Available'";
-	    productList = jdbcTemplate.query(find, new ProductMapperAll());
+		productList = jdbcTemplate.query(find, new ProductMapperAll());
 		return productList;
 	}
 
@@ -73,33 +73,31 @@ public class ProductDao implements ProductInterface {
 	public List<Product> inActiveProductList() {
 		List<Product> productList;
 		String find = "select id,name,price,category,size,quantity,fabric,gender,image from product where is_available='Not Available'";
-	    productList = jdbcTemplate.query(find, new ProductMapperAll());
+		productList = jdbcTemplate.query(find, new ProductMapperAll());
 		return productList;
 	}
 
 	// --Get Product Details Using Product ID---
-	public Product getProductById(int productId) 
-	{
+	public Product getProductById(int productId) {
 		Product getDetails;
 		String find = "select id,name,price,category,size,quantity,fabric,gender from product where id=?";
-	    getDetails = jdbcTemplate.queryForObject(find, new SingleProductMapper(), productId);
+		getDetails = jdbcTemplate.queryForObject(find, new SingleProductMapper(), productId);
 		return getDetails;
 	}
 
 	// --Delete Product---
 	public int deleteProduct(int id) {
 		String delete = "update product set is_available='Not Available' where id=?";
-		Object[] details = {id};
+		Object[] details = { id };
 		int update = jdbcTemplate.update(delete, details);
 		logger.info("Delete Product : " + update);
 		return update;
 	}
 
 	// ---Active Product By Id---
-	public int activeProduct(int id) 
-	{
+	public int activeProduct(int id) {
 		String active = "update product set is_available='Available' where id=?";
-		Object[] details = {id };
+		Object[] details = { id };
 		int update = jdbcTemplate.update(active, details);
 		logger.info("Active Product : " + update);
 		return update;
@@ -130,7 +128,7 @@ public class ProductDao implements ProductInterface {
 	public List<Category> categoryList() {
 		List<Category> listCategory;
 		String categoryList = "select id,category_name,is_available from category where is_available='Available'";
-	    listCategory = jdbcTemplate.query(categoryList, new CategoryMapper());
+		listCategory = jdbcTemplate.query(categoryList, new CategoryMapper());
 		return listCategory;
 	}
 
@@ -138,7 +136,7 @@ public class ProductDao implements ProductInterface {
 	public List<Category> inActiveCategoryList() {
 		List<Category> listCategory;
 		String categoryList = "select id,category_name,is_available from category where is_available='Not Available'";
-	    listCategory = jdbcTemplate.query(categoryList, new CategoryMapper());
+		listCategory = jdbcTemplate.query(categoryList, new CategoryMapper());
 		return listCategory;
 	}
 
@@ -163,14 +161,14 @@ public class ProductDao implements ProductInterface {
 	public Category findCategoryById(int id) {
 		Category listCategory;
 		String find = "select id,category_name,is_available from category where id=?";
-	    listCategory = jdbcTemplate.queryForObject(find, new CategoryMapperSingle(), id);
+		listCategory = jdbcTemplate.queryForObject(find, new CategoryMapperSingle(), id);
 		return listCategory;
 	}
 
 	// --Delete category Details---
 	public int deleteCategoryDetails(int id) {
 		String delete = "update category set is_available='Not Available' where id=?";
-		Object[] details = {id };
+		Object[] details = { id };
 		int deleteRows = jdbcTemplate.update(delete, details);
 		logger.info("Deleted Rows :" + deleteRows);
 		return 1;
@@ -179,39 +177,58 @@ public class ProductDao implements ProductInterface {
 	// ---Update Un Active to Active Category ---
 	public int activeCategoryDetails(int id) {
 		String active = "update category set is_available='Available' where id=?";
-		Object[] details = {id };
+		Object[] details = { id };
 		int activeRows = jdbcTemplate.update(active, details);
 		logger.info("Activated Product : " + activeRows);
 		return 1;
 	}
 	// -----Sales ----
-	
+
 	// ---Sales List----
-	public long getSalesList()
-	{
-		long salesAmount=0;
-		//--Query For Using Only Take Last Month Of Sales
-		String findMonthlySales="select SUM(sales_amount) from sales where month(Date)=month(now())-1";
+	public long getSalesList() {
+		long salesAmount = 0;
+		// --Query For Using Only Take Last Month Of Sales
+		String findMonthlySales = "select SUM(counts) from sales where month(Date)=month(now())-1";
 		List<Sales> query = jdbcTemplate.query(findMonthlySales, new SalesAmountMapper());
-		for(Sales sales:query)
-		{
-		    salesAmount = sales.getSalesAmount();
-		}
-		return salesAmount;	
-	}
-	
-	
-	public long getCurrentMonthSales()
-	{
-		long salesAmount=0;
-		//--Query For Using Only Take Current Month Of Sales
-		String findMonthlySales="select SUM(sales_amount) from sales where month(Date)=month(now())-0";
-		List<Sales> query = jdbcTemplate.query(findMonthlySales, new SalesAmountMapper());
-		for(Sales sales:query)
-		{
-		    salesAmount = sales.getSalesAmount();
+		for (Sales sales : query) {
+			salesAmount = sales.getSalesAmount();
 		}
 		return salesAmount;
-		
+	}
+
+	public long getCurrentMonthSales() {
+		long salesAmount = 0;
+		// --Query For Using Only Take Current Month Of Sales
+		String findMonthlySales = "select SUM(counts) from sales where month(Date)=month(now())-0";
+		List<Sales> query = jdbcTemplate.query(findMonthlySales, new SalesAmountMapper());
+		for (Sales sales : query) {
+			salesAmount = sales.getSalesAmount();
+		}
+		return salesAmount;
+	}
+
+	// ----Get Product Count Sales List
+
+	public long getPreviousProductSales() {
+		long quantitySalesCount = 0;
+		// --Query For Using Only Take Current Month Of Sales Total Quantity
+		String findQuery = "select SUM(counts) from product_sales where month(Date)=month(now())-0";
+		List<Sales> getTotalQuantity = jdbcTemplate.query(findQuery, new SalesAmountMapper());
+		for (Sales sales : getTotalQuantity) {
+			quantitySalesCount = sales.getSalesAmount();
+		}
+		return quantitySalesCount;
+	}
+
+	public long getCurrentMonthProductSales() {
+		long quantitySalesCount = 0;
+		// --Query For Using Only Take Previous Month Of Sales Total Quantity
+		String findQuery = "select SUM(counts) from product_sales where month(Date)=month(now())-1";
+		List<Sales> getTotalQuantity = jdbcTemplate.query(findQuery, new SalesAmountMapper());
+		for (Sales sales : getTotalQuantity) {
+			quantitySalesCount = sales.getSalesAmount();
+		}
+		return quantitySalesCount;
+
 	}
 }

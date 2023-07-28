@@ -13,7 +13,7 @@ public class SalesAmountMapper implements RowMapper<Sales>
 	@Override
 	public Sales mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Sales sale=new Sales();
-		int salesAmount=rs.getInt("SUM(sales_amount)");
+		int salesAmount=rs.getInt("SUM(counts)");
 		sale.setSalesAmount(salesAmount);
 		return sale;
 	}

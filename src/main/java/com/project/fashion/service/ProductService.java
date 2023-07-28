@@ -98,4 +98,14 @@ public class ProductService
 	{
 		return productDao.getSalesList();
 	}
+	
+	public long getPreviousProductSales()
+	{
+		return productDao.getCurrentMonthProductSales();
+	}
+	public long getCurrentMonthProductSales()
+	{
+		return productDao.getPreviousProductSales();
+		
+	}
 }

@@ -60,7 +60,7 @@ public class UserDao implements UserInterface {
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 			String encodedPassword = encoder.encode(password);
 
-			String insert = "insert into admin_user(username,email,password,phone_number,gender,is_available)values(?,?,?,?,?,?)";
+			String insert = "insert into admin_user(username,email,password,phone_number,gender,is_available)values(?,?,?,?,?,'Available')";
 			boolean name = valid.nameValidation(user.getName());
 			boolean email1 = valid.emailValidation(user.getEmail());
 			boolean password1 = valid.passwordValidation(user.getPassword());
@@ -68,8 +68,7 @@ public class UserDao implements UserInterface {
 			if (name && email1&& phone&& password1) {
 				String input = user.getName();
 				String userName = input.substring(0, 1).toUpperCase() + input.substring(1);
-				Object[] details = { userName, user.getEmail(), encodedPassword, user.getMobile(), user.getGender(),
-						"Available" };
+				Object[] details = { userName, user.getEmail(), encodedPassword, user.getMobile(), user.getGender() };
 				int numberOfRows = jdbcTemplate.update(insert, details);
 				logger.info("Inserted Rows : " + numberOfRows);
 				return 1;
@@ -194,8 +193,8 @@ public class UserDao implements UserInterface {
 			String image = getDetails.getImage();
 			int amount = price;
 			int totalAmount = amount * quantity;
-			String inserts = "insert into cart(customer_id ,product_id ,image,product_name ,price,size ,product_type ,quantity ,total_amount ,is_available )values(?,?,?,?,?,?,?,?,?,?)";
-			Object[] details = { userId, id, image, productName, price, size, type, quantity, totalAmount, "Available" };
+			String inserts = "insert into cart(customer_id ,product_id ,image,product_name ,price,size ,product_type ,quantity ,total_amount ,is_available )values(?,?,?,?,?,?,?,?,?,'Available')";
+			Object[] details = { userId, id, image, productName, price, size, type, quantity, totalAmount};
 			int rows = jdbcTemplate.update(inserts, details);
 			logger.info("Insert Cart details : " + rows);
 			return 2;
@@ -250,10 +249,10 @@ public class UserDao implements UserInterface {
 		for (Cart cartModel : cartlist) 
 		{
 			
-			String insert = "insert into orders(customer_id,cart_id,product_id,image,productsname,price,size,category,quantity,total_amount,is_available)values(?,?,?,?,?,?,?,?,?,?,?)";
+			String insert = "insert into orders(customer_id,cart_id,product_id,image,productsname,price,size,category,quantity,total_amount,is_available)values(?,?,?,?,?,?,?,?,?,?,'Available')";
 			Object[] details = { userId, cartModel.getId(), cartModel.getProductId(), cartModel.getImage(),
 		    cartModel.getProductName(), cartModel.getPrice(), cartModel.getSize(), cartModel.getProductType(),
-		    cartModel.getQuantity(), cartModel.getAmount(), "Available" };
+		    cartModel.getQuantity(), cartModel.getAmount()};
 			int insertRows = jdbcTemplate.update(insert, details);
 			logger.info("Inserted Order : " + insertRows);
 
@@ -263,8 +262,8 @@ public class UserDao implements UserInterface {
      
 	// ----update order details------
 		public int updateOrderDetails(int id, String size, int quantity, int amount, int userId) {
-			String findCart = "select id,size,quantity,total_amount from cart where id=? and is_available=? ";
-			Cart queryForObject = jdbcTemplate.queryForObject(findCart, new UpdateCartMapper(), id, "Available");
+			String findCart = "select id,size,quantity,total_amount from cart where id=? and is_available='Available' ";
+			Cart queryForObject = jdbcTemplate.queryForObject(findCart, new UpdateCartMapper(), id);
 			int amount2 = queryForObject.getAmount();
 			int quantity2 = queryForObject.getQuantity();
 			if (quantity > quantity2) {
@@ -280,7 +279,6 @@ public class UserDao implements UserInterface {
 				return 1;
 			} else {
 				int updateAmount = amount2 - (amount2 / quantity2);
-				System.out.println("Calculation :" + updateAmount);
 				String updateCart = "update cart set size=?,quantity=?,total_amount=? where id=?";
 				Object[] details = { size, quantity, updateAmount, id };
 				String updateOrder = "update orders set size=?,quantity=?,total_amount=? where id=?";
@@ -298,12 +296,23 @@ public class UserDao implements UserInterface {
 		List<Order> getOrderList = jdbcTemplate.query(listQuery, new OrderMapper(), userId);
 		for (Order cartModel : getOrderList)
 		{
-			String inserts = "insert into altercart(customer_id,product_id,image,productsname ,price,size ,category ,quantity ,total_amount ,is_available )values(?,?,?,?,?,?,?,?,?,?)";
+			String inserts = "insert into altercart(customer_id,product_id,image,productsname ,price,size ,category ,quantity ,total_amount ,is_available )values(?,?,?,?,?,?,?,?,?,'Available')";
 			Object[] detail = { userId, cartModel.getProductId(), cartModel.getImage(), cartModel.getProductName(),
 					cartModel.getPrice(), cartModel.getSize(), cartModel.getCategory(), cartModel.getQuantity(),
-					cartModel.getAmount(), "Available" };
-			int update = jdbcTemplate.update(inserts, detail);
-			logger.info("Insert Alter : " + update);
+					cartModel.getAmount()};
+			int saveAlter = jdbcTemplate.update(inserts, detail);
+			logger.info("Insert Alter : " + saveAlter);
+			
+			
+			
+			//---insert product Sales----
+			LocalDate today = LocalDate.now();
+			String insertProductSales="insert into  product_sales(product_id,counts,Date)values(?,?,?)";
+			Object[] detailsInsert= {cartModel.getProductId(), cartModel.getQuantity(),today};
+			int insertRow = jdbcTemplate.update(insertProductSales,detailsInsert);
+			logger.info("Insert Product Sales"+insertRow);
+			
+			
 		}
 	}
 	// ----Cancel Order Details-----
@@ -378,8 +387,8 @@ public class UserDao implements UserInterface {
 		int price = getDetails.getPrice();
 		String size = getDetails.getSize();
 		String type = getDetails.getType();
-		String insert = "insert into wish_list(customer_id,image,product_id,product_name,price,size,category,is_available)values(?,?,?,?,?,?,?,?)";
-		Object[] details = { userId, image, id, name, price, size, type, "Available" };
+		String insert = "insert into wish_list(customer_id,image,product_id,product_name,price,size,category,is_available)values(?,?,?,?,?,?,?,'Available')";
+		Object[] details = { userId, image, id, name, price, size, type };
 		int insertRow = jdbcTemplate.update(insert, details);
 		logger.info("Insert Wish List : " + insertRow);
 		return 1;
@@ -414,7 +423,7 @@ public class UserDao implements UserInterface {
 		logger.info("Payment Inserted Rows : " + numberOfRows);
 		 
 		 //---Complete Payment And add to Sales Table---
-		 String insertSales="insert into sales (sales_amount,Date)values(?,?)";
+		 String insertSales="insert into sales (counts,Date)values(?,?)";
 		 Object[] inserts= {payment.getAmount(),today};
 		 int salesUpdate = jdbcTemplate.update(insertSales,inserts);
 		 logger.info("Inserted Sales Details : "+salesUpdate);
