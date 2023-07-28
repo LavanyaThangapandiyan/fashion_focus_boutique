@@ -143,8 +143,9 @@ public class ProductDao implements ProductInterface {
 	}
 
 	public List<Category> getCategoryName() {
+		List<Category> getCategoryNameList;
 		String getCategoryName = "select category_name from category where is_available='Available'";
-		List<Category> getCategoryNameList = jdbcTemplate.query(getCategoryName, new CategoryNameMapper());
+		getCategoryNameList = jdbcTemplate.query(getCategoryName, new CategoryNameMapper());
 		return getCategoryNameList;
 	}
 

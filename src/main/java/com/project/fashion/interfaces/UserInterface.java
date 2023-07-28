@@ -41,7 +41,7 @@ public interface UserInterface
 	public List<Order> getOrdersList(int userId);
 	public List<Order> getCancelledOrdersList(int userId);
 	public List<Order> getTotalAmountOrder(int userId, HttpSession session);
-	public List<Order> getOrderHistoryList(int UserId);
+	public List<Order> getOrderHistoryList(int userId);
 	//----Wish list-----
 	public int saveWishList(int id, int userId) throws IOException;
 	public List<WishList> getWishListById(int customerId);

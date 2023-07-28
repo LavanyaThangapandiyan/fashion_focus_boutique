@@ -73,8 +73,8 @@ public class ProductController {
 	
 	@GetMapping("/update/{id}")
 	public String showFormProductUpdate(@PathVariable(value = "id") int id, Model model) {
-		Product product = productService.getProductById(id);
-		model.addAttribute("product", product);
+		Product products = productService.getProductById(id);
+		model.addAttribute("product", products);
 		return "/update_product";
 	}
    
@@ -146,8 +146,8 @@ public class ProductController {
 
 	@GetMapping("/updatecategory/{id}")
 	public String showFormForCategoryUpdate(@PathVariable(value = "id") int id, Model model) {
-		Category category = productService.findCategoryById(id);
-		model.addAttribute("category", category);
+		Category categorys = productService.findCategoryById(id);
+		model.addAttribute("category", categorys);
 		return "update";
 	}
 

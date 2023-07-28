@@ -156,9 +156,9 @@ public class UserService
 	{
 		userDao.paymentList();
 	}
-	public List<Order> getOrderHistoryList(int UserId)
+	public List<Order> getOrderHistoryList(int userId)
 	{
-		return userDao.getOrderHistoryList(UserId);
+		return userDao.getOrderHistoryList(userId);
 		
 	}
 }

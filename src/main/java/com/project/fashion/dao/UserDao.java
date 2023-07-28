@@ -134,7 +134,7 @@ public class UserDao implements UserInterface {
 		String getUser = userList.toString();
 		String userEmail = user.getEmail();
 		boolean contains = getUser.contains(userEmail);
-		if (contains == true) {
+		if (contains) {
 			String updatePassword = "update admin_user set password=? where email=?";
 			Object[] details = { encodedPassword, user.getEmail() };
 			int numberOfRows = jdbcTemplate.update(updatePassword, details);
@@ -163,8 +163,9 @@ public class UserDao implements UserInterface {
 
 	// --- Show Update Details---
 	public Cart getcartUpdateDetails(int cartId) {
+		Cart queryForObject;
 		String findCart = "select id,size,quantity,total_amount from cart where id=? and is_available='Available'";
-		Cart queryForObject = jdbcTemplate.queryForObject(findCart, new UpdateCartMapper(), cartId);
+		queryForObject = jdbcTemplate.queryForObject(findCart, new UpdateCartMapper(), cartId);
 		return queryForObject;
 	}
 
@@ -218,9 +219,10 @@ public class UserDao implements UserInterface {
 
 	// ---Cart List--------
 	public List<Cart> cartList(int customerId) {
+		List<Cart> cartList;
 		String getCartList = " select id,customer_id,product_id,image,product_name,price,size,product_type,quantity,total_amount,is_available from cart where customer_id=? and is_available='Available'";
-		List<Cart> queryForObject = jdbcTemplate.query(getCartList, new CartMapper(), customerId);
-		return queryForObject;
+		cartList= jdbcTemplate.query(getCartList, new CartMapper(), customerId);
+		return cartList;
 	}
 
 	public List<Cart> inActiveCartList(int customerId) {
@@ -250,7 +252,7 @@ public class UserDao implements UserInterface {
 			
 			String insert = "insert into orders(customer_id,cart_id,product_id,image,productsname,price,size,category,quantity,total_amount,is_available)values(?,?,?,?,?,?,?,?,?,?,?)";
 			Object[] details = { userId, cartModel.getId(), cartModel.getProductId(), cartModel.getImage(),
-		    cartModel.getProductName(), cartModel.getPrice(), cartModel.getSize(), cartModel.getProduct_type(),
+		    cartModel.getProductName(), cartModel.getPrice(), cartModel.getSize(), cartModel.getProductType(),
 		    cartModel.getQuantity(), cartModel.getAmount(), "Available" };
 			int insertRows = jdbcTemplate.update(insert, details);
 			logger.info("Inserted Order : " + insertRows);
@@ -356,10 +358,10 @@ public class UserDao implements UserInterface {
 
 	// ---get order History-----
 
-	public List<Order> getOrderHistoryList(int UserId) {
+	public List<Order> getOrderHistoryList(int userId) {
 		List<Order> query2;
 		String query = "select id,customer_id,product_id,image,productsname,price,size ,category,quantity,total_amount,is_available from altercart where customer_id=? and  is_available='Available'";
-		query2 = jdbcTemplate.query(query, new OrderMapper(), UserId);
+		query2 = jdbcTemplate.query(query, new OrderMapper(), userId);
 		return query2;
 	}
 
@@ -414,8 +416,8 @@ public class UserDao implements UserInterface {
 		 //---Complete Payment And add to Sales Table---
 		 String insertSales="insert into sales (sales_amount,Date)values(?,?)";
 		 Object[] inserts= {payment.getAmount(),today};
-		 int update2 = jdbcTemplate.update(insertSales,inserts);
-		 logger.info("Inserted Sales Details : "+update2);
+		 int salesUpdate = jdbcTemplate.update(insertSales,inserts);
+		 logger.info("Inserted Sales Details : "+salesUpdate);
 		
 		 //--After Order Process Complete Delete Orders Details---
 		  String delete="delete from orders where customer_id=?"; 

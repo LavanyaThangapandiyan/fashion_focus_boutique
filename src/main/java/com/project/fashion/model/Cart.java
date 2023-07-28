@@ -9,7 +9,7 @@ public class Cart {
 	private String productName;
 	private int price;
 	private String size;
-	private String product_type;
+	private String productType;
 	private String fabric;
 	private String gender;
 	private int quantity;
@@ -78,11 +78,11 @@ public class Cart {
 	public void setSize(String size) {
 		this.size = size;
 	}
-	public String getProduct_type() {
-		return product_type;
+	public String getProductType() {
+		return productType;
 	}
-	public void setProduct_type(String product_type) {
-		this.product_type = product_type;
+	public void setProductType(String product_type) {
+		this.productType = product_type;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -106,7 +106,7 @@ public class Cart {
 		super();
 	}
 	public Cart(String image, int id, int orderId, int customerId, int productId, String productName, int price,
-			String size, String product_type, String fabric, String gender, int quantity, int amount, String status) {
+			String size, String productType, String fabric, String gender, int quantity, int amount, String status) {
 		super();
 		this.image = image;
 		this.id = id;
@@ -116,7 +116,7 @@ public class Cart {
 		this.productName = productName;
 		this.price = price;
 		this.size = size;
-		this.product_type = product_type;
+		this.productType = productType;
 		this.fabric = fabric;
 		this.gender = gender;
 		this.quantity = quantity;
@@ -127,7 +127,7 @@ public class Cart {
 	public String toString() {
 		return "Cart [image=" + image + ", id=" + id + ", orderId=" + orderId + ", customerId=" + customerId
 				+ ", productId=" + productId + ", productName=" + productName + ", price=" + price + ", size=" + size
-				+ ", product_type=" + product_type + ", fabric=" + fabric + ", gender=" + gender + ", quantity="
+				+ ", productType=" + productType + ", fabric=" + fabric + ", gender=" + gender + ", quantity="
 				+ quantity + ", amount=" + amount + ", status=" + status + "]";
 	}
 	

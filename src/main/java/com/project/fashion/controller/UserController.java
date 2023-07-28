@@ -29,9 +29,7 @@ public class UserController {
 	ProductService productService = new ProductService();
 	Validation valid = new Validation();
 	Product product = new Product();
-	User user = new User();
-	
-
+	User users = new User();
 	@Value("${email:}")
 	String email;
 
@@ -69,13 +67,12 @@ public class UserController {
 			@RequestParam("password") String password, @RequestParam("mobile") String mobile,
 			@RequestParam("gender") String gender, Model model)
 			throws ExistMailIdException, ExistMobileException, JsonProcessingException {
-		User user = new User();
-		user.setName(name);
-		user.setEmail(email);
-		user.setPassword(password);
-		user.setMobile(mobile);
-		user.setGender(gender);
-		int number = userService.saveDetails(user, model);
+		users.setName(name);
+		users.setEmail(email);
+		users.setPassword(password);
+		users.setMobile(mobile);
+		users.setGender(gender);
+		int number = userService.saveDetails(users, model);
 		if (number == 1)
 			return "registerpopup";
 		else
@@ -127,9 +124,9 @@ public class UserController {
 	@GetMapping("forgotpassword")
 	public String resetPassword(@RequestParam("email") String email, @RequestParam("password") String password,
 			Model model) throws InvalidEmailException, JsonProcessingException {
-		user.setEmail(email);
-		user.setPassword(password);
-		int number = userService.updateUserPassword(user, model);
+		users.setEmail(email);
+		users.setPassword(password);
+		int number = userService.updateUserPassword(users, model);
 		if (number == 1)
 			return "login";
 		else
