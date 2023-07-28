@@ -11,7 +11,6 @@ public class OrderAmountMappper  implements RowMapper<Order>{
 
 	@Override
 	public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
-		// TODO Auto-generated method stub
 		Order order=new Order();
 		int amount=rs.getInt("SUM(total_amount)");
 		order.setAmount(amount);

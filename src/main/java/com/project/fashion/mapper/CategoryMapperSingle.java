@@ -11,7 +11,6 @@ public class CategoryMapperSingle implements RowMapper<Category>{
 
 	@Override
 	public Category mapRow(ResultSet rs, int rowNum) throws SQLException {
-		// TODO Auto-generated method stub
 		Category category=new Category();
 		int id=rs.getInt("id");
 		String name=rs.getString("category_name");

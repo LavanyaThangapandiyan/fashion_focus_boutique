@@ -54,11 +54,11 @@
 					<input hidden name="productId" th:value="${cart.productId}">
 					<p><input hidden name="productname" th:value="${cart.productName}" readonly></p>
 					<p><input hidden name="price" id="price" th:value="${cart.price}" readonly></p>
-					<p><input hidden name="type" id="type" th:value="${cart.product_type}" readonly></p>
+					<p><input hidden name="type" id="type" th:value="${cart.productType}" readonly></p>
 					<p><input hidden name="amount" id="fabric" th:value="${cart.amount}" readonly></p>
 					<td><span th:text="${cart.productName}"> Name </span></td>
 					<td>Rs.<span th:text="${cart.price}"> Price </span></td>
-					<td><span th:text="${cart.product_type}"> Type </span></td>
+					<td><span th:text="${cart.productType}"> Type </span></td>
 					<td><span th:text="${cart.size}"> Type </span></td>
 					<td><span th:text="${cart.quantity}">Quantity </span></td>
 					<td><span th:text="${cart.amount}">Total Amount</span></td>

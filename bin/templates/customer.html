@@ -23,7 +23,6 @@
 	<div id="mySidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		<a th:href="@{/product}">Add Products</a>
-		<a href="item.html">Products</a>
 		<a href="customer.html">Our Customers</a>
 		<a href="productlist.html">ProductList</a>
 		<a href="#">Sales</a>
@@ -242,12 +241,9 @@
 	}
 	// other grid options ...
 	}
-
-
-
 	<script>
-
-		document.addEventListener('DOMContentLoaded', () => {
+		document.addEventListener('DOMContentLoaded', () => 
+		{
 			const gridDiv = document.querySelector('#myGrid');
 			new agGrid.Grid(gridDiv, gridOptions);
 

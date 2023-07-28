@@ -421,8 +421,9 @@ public class UserDao implements UserInterface {
 		
 		 //--After Order Process Complete Delete Orders Details---
 		  String delete="delete from orders where customer_id=?"; 
-		  Object[] detail={userId}; int update = jdbcTemplate.update(delete,detail);
-		  logger.info(" After Payment Clear Orders : "+update);
+		  Object[] detail={userId}; 
+		  int deleteOrder = jdbcTemplate.update(delete,detail);
+		  logger.info(" After Payment Clear Orders : "+deleteOrder);
 		  
 		  //---After Order Empty to  Cart----
 		  String clearCart="delete from cart where customer_id=?";

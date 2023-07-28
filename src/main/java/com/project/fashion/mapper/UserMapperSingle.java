@@ -12,7 +12,6 @@ public class UserMapperSingle implements RowMapper<User> {
 
 	@Override
 	public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-		// TODO Auto-generated method stub
 		User user=new User();
 		String email=rs.getString("email");
 		String password=rs.getString("password");

@@ -13,7 +13,6 @@ public class PaymentMapper implements RowMapper<Payment>
 
 	@Override
 	public Payment mapRow(ResultSet rs, int rowNum) throws SQLException {
-		// TODO Auto-generated method stub
 		Payment payment=new Payment();
 		
 		int orderId=rs.getInt("order_id");

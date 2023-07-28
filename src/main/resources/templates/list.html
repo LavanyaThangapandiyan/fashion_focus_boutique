@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org" xml:lang="en">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/tab.css">
 
 <head>
 	<meta charset="ISO-8859-1">
@@ -28,17 +27,143 @@
 		<a th:href="@{/category}">Category List</a>
 		<a th:href="@{/sales}">Sales</a>
 	</div>
-	<!-- Use any element to open the sidenav -->
-
-	<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-	<div id="main">
-
+	<div class="row">
+		<div class="column">
+			<div class="text">
+				<h2 style="color: #740074"> Last Month Of Sales Percentage! .<h2>
+			</div>
+			<div class="circle-wrap">
+				<div class="circle">
+					<div class="mask full">
+						<div class="fill"></div>
+					</div>
+					<div class="mask half">
+						<div class="fill"></div>
+					</div>
+					<div class="inside-circle">
+						<h2 th:text="${salesamount}"></h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="column">
+			<div class="fonts">
+				<h2 style="color: #740074"> Current Month Of Sales Percentage! .<h2>
+			</div>
+			<div class="circle-wrap">
+				<div class="circle">
+					<div class="mask full">
+						<div class="fill"></div>
+					</div>
+					<div class="mask half">
+						<div class="fill"></div>
+					</div>
+					<div class="inside-circle">
+						<h2 th:text="${currentMonthSales}"></h2>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
 	<style>
-	
-	     body {
-			background: url(https://st2.depositphotos.com/1019714/5549/v/950/depositphotos_55498715-stock-illustration-womens-fashion-background-clothing-and.jpg) no-repeat center center fixed;
-			background-size: cover;
+		.column {
+			float: left;
+			width: 50%;
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		.row {
+			display: flex;
+		}
+
+		.column {
+			flex: 50%;
+		}
+
+		@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,300);
+
+		.logo {
+			max-width: 70px;
+		}
+
+		.fonts {
+			text-align: center;
+		}
+
+		.text {
+			text-align: center;
+		}
+
+		body {
+			font-family: "Roboto", sans-serif;
+		}
+
+		.circle-wrap {
+			margin: 150px auto;
+			width: 150px;
+			height: 150px;
+			background: #fefcff;
+			border-radius: 50%;
+			border: 1px solid #cdcbd0;
+		}
+
+		.circle-wrap .circle .mask,
+		.circle-wrap .circle .fill {
+			width: 150px;
+			height: 150px;
+			position: absolute;
+			border-radius: 50%;
+		}
+
+		.circle-wrap .circle .mask {
+			clip: rect(0px, 150px, 150px, 75px);
+		}
+
+		.circle-wrap .inside-circle {
+			width: 122px;
+			height: 122px;
+			border-radius: 50%;
+			background: #db86db;
+			line-height: 120px;
+			text-align: center;
+			margin-top: 14px;
+			margin-left: 14px;
+			color: #101111;
+			position: absolute;
+			z-index: 100;
+			font-weight: 700;
+			font-size: 2em;
+		}
+
+		/* color animation */
+
+		/* 3rd progress bar */
+		.mask .fill {
+			clip: rect(0px, 75px, 150px, 0px);
+			background-color: #740074;
+		}
+
+		.mask.full,
+		.circle .fill {
+			animation: fill ease-in-out 3s;
+			transform: rotate(135deg);
+		}
+
+		@keyframes fill {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(135deg);
+			}
 		}
 		.logo {
 			max-width: 70px;
@@ -135,7 +260,6 @@
 			border-top: none;
 		}
 	</style>
-
 	<script>
 		function openNav() {
 			document.getElementById("mySidenav").style.width = "250px";

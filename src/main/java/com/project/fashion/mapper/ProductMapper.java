@@ -12,7 +12,6 @@ public class ProductMapper implements RowMapper<Product> {
 
 	@Override
 	public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
-		// TODO Auto-generated method stub
 		Product product=new Product();
 		int id=rs.getInt("id");
 		String name=rs.getString("name");

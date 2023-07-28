@@ -11,7 +11,6 @@ public class UpdateOrderMapper implements RowMapper<Order> {
 
 	@Override
 	public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
-		// TODO Auto-generated method stub
 		Order order=new Order();
 		int id=rs.getInt("id");
 		int quantity=rs.getInt("quantity");

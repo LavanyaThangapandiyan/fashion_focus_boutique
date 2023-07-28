@@ -15,26 +15,11 @@ public class Cart {
 	private int quantity;
 	private int amount;
 	private String status;
-	
-	
-	
 	public String getImage() {
 		return image;
 	}
 	public void setImage(String image) {
 		this.image = image;
-	}
-	public String getFabric() {
-		return fabric;
-	}
-	public void setFabric(String fabric) {
-		this.fabric = fabric;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 	public int getId() {
 		return id;
@@ -81,8 +66,20 @@ public class Cart {
 	public String getProductType() {
 		return productType;
 	}
-	public void setProductType(String product_type) {
-		this.productType = product_type;
+	public void setProductType(String productType) {
+		this.productType = productType;
+	}
+	public String getFabric() {
+		return fabric;
+	}
+	public void setFabric(String fabric) {
+		this.fabric = fabric;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -102,6 +99,7 @@ public class Cart {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
 	public Cart() {
 		super();
 	}
@@ -130,7 +128,4 @@ public class Cart {
 				+ ", productType=" + productType + ", fabric=" + fabric + ", gender=" + gender + ", quantity="
 				+ quantity + ", amount=" + amount + ", status=" + status + "]";
 	}
-	
-	
-
 }

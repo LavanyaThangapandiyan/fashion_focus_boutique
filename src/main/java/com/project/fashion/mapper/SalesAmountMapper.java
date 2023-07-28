@@ -12,7 +12,6 @@ public class SalesAmountMapper implements RowMapper<Sales>
 
 	@Override
 	public Sales mapRow(ResultSet rs, int rowNum) throws SQLException {
-		// TODO Auto-generated method stub
 		Sales sale=new Sales();
 		int salesAmount=rs.getInt("SUM(sales_amount)");
 		sale.setSalesAmount(salesAmount);

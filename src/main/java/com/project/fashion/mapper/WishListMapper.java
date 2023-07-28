@@ -11,7 +11,6 @@ public class WishListMapper implements RowMapper<WishList>{
 
 	@Override
 	public WishList mapRow(ResultSet rs, int rowNum) throws SQLException {
-		// TODO Auto-generated method stub
 		WishList wish=new WishList();
 		int customerId=rs.getInt("customer_id");
 		int productId=rs.getInt("product_id");
