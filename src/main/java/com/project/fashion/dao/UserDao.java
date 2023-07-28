@@ -224,15 +224,17 @@ public class UserDao implements UserInterface {
 	}
 
 	public List<Cart> inActiveCartList(int customerId) {
+		List<Cart> query;
 		String getInActiveCartList = "select id,customer_id,product_id,image,product_name,price,size,product_type,quantity,total_amount,is_available from cart where customer_id=? and is_available=?";
-		List<Cart> query = jdbcTemplate.query(getInActiveCartList, new CartMapper(), customerId, "Not Available");
+	    query = jdbcTemplate.query(getInActiveCartList, new CartMapper(), customerId, "Not Available");
 		return query;
 	}
 
 	// ---Filter--
 	public List<Product> allProductList(String category) {
+		List<Product> productList;
 		String find = "select id,name,price,category,size,quantity,fabric,gender,image from product where is_available='Available' and category=?";
-		List<Product> productList = jdbcTemplate.query(find, new ProductMapperAll(), category);
+		productList = jdbcTemplate.query(find, new ProductMapperAll(), category);
 		return productList;
 	}
 	// --------------------Orders CRUD----------------
@@ -321,21 +323,24 @@ public class UserDao implements UserInterface {
 
 	// --Find Order Details Using orderId
 	public Order getorderUpdateDetails(int orderId) {
+		Order queryForObject;
 		String find = "select id,size,quantity,total_amount from orders where id=? and is_available=? ";
-		Order queryForObject = jdbcTemplate.queryForObject(find, new UpdateOrderMapper(), orderId, "Available");
+	    queryForObject = jdbcTemplate.queryForObject(find, new UpdateOrderMapper(), orderId, "Available");
 		return queryForObject;
 	}
 
 	// ---- Get Orders List (Admin)
 	public List<Order> getOrdersList(int userId) {
+		List<Order> getOrderList;
 		String listQuery = "select id,customer_id,product_id,image,productsname,price,size,category,quantity,total_amount,is_available from orders where customer_id=? and is_available=?";
-		List<Order> getOrderList = jdbcTemplate.query(listQuery, new OrderMapper(), userId, "Available");
+		getOrderList = jdbcTemplate.query(listQuery, new OrderMapper(), userId, "Available");
 		return getOrderList;
 	}
 
 	public List<Order> getCancelledOrdersList(int userId) {
+		List<Order> getOrderList;
 		String listQuery = "select id,customer_id,product_id,image,productsname,price,size,category,quantity,total_amount,is_available from orders where customer_id=? and is_available=?";
-		List<Order> getOrderList = jdbcTemplate.query(listQuery, new OrderMapper(), userId, "Not Available");
+		getOrderList = jdbcTemplate.query(listQuery, new OrderMapper(), userId, "Not Available");
 		return getOrderList;
 	}
 
@@ -351,8 +356,9 @@ public class UserDao implements UserInterface {
 	// ---get order History-----
 
 	public List<Order> getOrderHistoryList(int UserId) {
+		List<Order> query2;
 		String query = "select id,customer_id,product_id,image,productsname,price,size ,category,quantity,total_amount,is_available from altercart where customer_id=? and  is_available=?";
-		List<Order> query2 = jdbcTemplate.query(query, new OrderMapper(), UserId, "Available");
+		query2 = jdbcTemplate.query(query, new OrderMapper(), UserId, "Available");
 		return query2;
 	}
 
@@ -379,8 +385,9 @@ public class UserDao implements UserInterface {
 
 	// ---- Find wish list using customer ID---
 	public List<WishList> getWishListById(int customerId) {
+		List<WishList> query;
 		String getRow = "select customer_id,product_id,image,product_name,price,size,category from wish_list where customer_id=?";
-		List<WishList> query = jdbcTemplate.query(getRow, new WishListMapper(), customerId);
+	     query = jdbcTemplate.query(getRow, new WishListMapper(), customerId);
 		return query;
 	}
 
@@ -425,8 +432,9 @@ public class UserDao implements UserInterface {
 	// ---Get Payment Details (Admin)
 	public List<Payment> paymentList() 
 	{
+		List<Payment> listPayment;
 		String listQuery = "select order_id,amount,payment_type,Date from payment where order_id=?";
-		List<Payment> listPayment = jdbcTemplate.query(listQuery, new PaymentMapper());
+		listPayment = jdbcTemplate.query(listQuery, new PaymentMapper());
 		return listPayment;
 	}
 }

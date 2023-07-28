@@ -38,7 +38,7 @@ public class ProductDao implements ProductInterface {
 		boolean name = valid.nameValidation(productName);
 		boolean size = valid.nameValidation(product.getSize());
 		boolean fabric = valid.nameValidation(product.getFabric());
-		if (name == true && size == true && fabric == true) {
+		if (name  && size && fabric) {
 			Object[] details = { productName, product.getPrice(), product.getType(), product.getSize(),
 					product.getQuantity(), fabricName, product.getGender(), product.getImage(), "Available" };
 			int numberOfRows = jdbcTemplate.update(insert, details);
@@ -62,22 +62,26 @@ public class ProductDao implements ProductInterface {
 
 	// Get Product List
 	public List<Product> allProductList() {
+		List<Product> productList;
 		String find = "select id,name,price,category,size,quantity,fabric,gender,image from product where is_available='Available'";
-		List<Product> productList = jdbcTemplate.query(find, new ProductMapperAll());
+	    productList = jdbcTemplate.query(find, new ProductMapperAll());
 		return productList;
 	}
 
 	// Get Inactive Product List
 	public List<Product> inActiveProductList() {
+		List<Product> productList;
 		String find = "select id,name,price,category,size,quantity,fabric,gender,image from product where is_available='Not Available'";
-		List<Product> productList = jdbcTemplate.query(find, new ProductMapperAll());
+	    productList = jdbcTemplate.query(find, new ProductMapperAll());
 		return productList;
 	}
 
 	// --Get Product Details Using Product ID---
-	public Product getProductById(int productId) {
+	public Product getProductById(int productId) 
+	{
+		Product getDetails;
 		String find = "select id,name,price,category,size,quantity,fabric,gender from product where id=?";
-		Product getDetails = jdbcTemplate.queryForObject(find, new SingleProductMapper(), productId);
+	    getDetails = jdbcTemplate.queryForObject(find, new SingleProductMapper(), productId);
 		return getDetails;
 	}
 
@@ -107,11 +111,10 @@ public class ProductDao implements ProductInterface {
 		String getName = category.getCategoryName();
 		boolean name = valid.nameValidation(getName);
 		boolean contains = getCategory.contains(getName);
-
-		System.out.println("Category contains " + contains);
-		if (contains == true) {
+		logger.info("Category contains " + contains);
+		if (contains) {
 			throw new ExistCategoryException("Category Already Exist");
-		} else if (name == true) {
+		} else if (name) {
 			String input = category.getCategoryName();
 			String categoryName = input.substring(0, 1).toUpperCase() + input.substring(1);
 			String save = "insert into category(category_name,is_available)values(?,?)";
@@ -124,15 +127,17 @@ public class ProductDao implements ProductInterface {
 
 	// ---- Active Category List---------
 	public List<Category> categoryList() {
+		List<Category> listCategory;
 		String categoryList = "select id,category_name,is_available from category where is_available='Available'";
-		List<Category> listCategory = jdbcTemplate.query(categoryList, new CategoryMapper());
+	    listCategory = jdbcTemplate.query(categoryList, new CategoryMapper());
 		return listCategory;
 	}
 
 	// ---- In Active Category List---------
 	public List<Category> inActiveCategoryList() {
+		List<Category> listCategory;
 		String categoryList = "select id,category_name,is_available from category where is_available='Not Available'";
-		List<Category> listCategory = jdbcTemplate.query(categoryList, new CategoryMapper());
+	    listCategory = jdbcTemplate.query(categoryList, new CategoryMapper());
 		return listCategory;
 	}
 
@@ -154,8 +159,9 @@ public class ProductDao implements ProductInterface {
 
 	// ---Get category By ID---
 	public Category findCategoryById(int id) {
+		Category listCategory;
 		String find = "select id,category_name,is_available from category where id=?";
-		Category listCategory = jdbcTemplate.queryForObject(find, new CategoryMapperSingle(), id);
+	    listCategory = jdbcTemplate.queryForObject(find, new CategoryMapperSingle(), id);
 		return listCategory;
 	}
 
@@ -177,7 +183,7 @@ public class ProductDao implements ProductInterface {
 		return 1;
 	}
 	// -----Sales ----
-	Sales sale = new Sales();
+	
 	// ---Sales List----
 	public long getSalesList()
 	{
@@ -185,12 +191,13 @@ public class ProductDao implements ProductInterface {
 		//--Query For Using Only Take Last Month Of Sales
 		String findMonthlySales="select SUM(sales_amount) from sales where month(Date)=month(now())-1";
 		List<Sales> query = jdbcTemplate.query(findMonthlySales, new SalesAmountMapper());
-		for(Sales sale:query)
+		for(Sales sales:query)
 		{
-		    salesAmount = sale.getSalesAmount();
+		    salesAmount = sales.getSalesAmount();
 		}
 		return salesAmount;	
 	}
+	
 	
 	public long getCurrentMonthSales()
 	{
@@ -198,9 +205,9 @@ public class ProductDao implements ProductInterface {
 		//--Query For Using Only Take Current Month Of Sales
 		String findMonthlySales="select SUM(sales_amount) from sales where month(Date)=month(now())-0";
 		List<Sales> query = jdbcTemplate.query(findMonthlySales, new SalesAmountMapper());
-		for(Sales sale:query)
+		for(Sales sales:query)
 		{
-		    salesAmount = sale.getSalesAmount();
+		    salesAmount = sales.getSalesAmount();
 		}
 		return salesAmount;
 		
