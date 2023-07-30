@@ -14,24 +14,6 @@ public class Order {
 	private int amount;
 	private String image;
 
-
-	public Order(int id, int orderId, int customerId, int productId, String productName, int price, String size,
-			String category, int quantity, String status, int amount, String image) {
-		super();
-		this.id = id;
-		this.orderId = orderId;
-		this.customerId = customerId;
-		this.productId = productId;
-		this.productName = productName;
-		this.price = price;
-		this.size = size;
-		this.category = category;
-		this.quantity = quantity;
-		this.status = status;
-		this.amount = amount;
-		this.image = image;
-	}
-
 	public String getImage() {
 		return image;
 	}

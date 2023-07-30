@@ -86,13 +86,30 @@ public class UserController {
 		user.setPassword(password);
 		int number = userService.findUserDetails(user);
 		if (number == 2)
-			return "list";
+			return "redirect:/list";
 		else if (number == 1) {
 			userService.findIdByEmail(email, session);
 			return "loginpopup";
 		} else
 			return "";
 	}
+	
+	@GetMapping("/list")
+	public String showSalesinList(Model model )
+	{
+		long salesList = productService.getSalesList();
+		model.addAttribute("salesamount",salesList);
+		long currentMonthSales = productService.getCurrentMonthSales();
+		model.addAttribute("currentMonthSales",currentMonthSales);
+		long currentMonthProductSales = productService.getCurrentMonthProductSales();
+		model.addAttribute("currentMonthProductSalesCount",currentMonthProductSales);
+		long previousProductSales = productService.getPreviousProductSales();
+		model.addAttribute("previousMonthProductSalesCount",previousProductSales);
+		return "list";
+	}
+	
+	
+	
 
 	// -----Handling Invalid Email Exception-----
 	@ExceptionHandler(InvalidEmailException.class)
@@ -319,6 +336,21 @@ public class UserController {
 	public String getLogoutConfirmation(HttpSession session)
 	{
 		session.invalidate();
-		return "/";
+		return "index";
+	}
+	
+	@GetMapping("/cod")
+	public String showCodForm(Model model,HttpSession session)
+	{
+		int userId = (int) session.getAttribute("id");
+		model.addAttribute("amount", userService.getTotalAmountOrder(userId, session));
+		userService.afterOrderClearCart(session);
+		return "cod";
+	}
+	@GetMapping("/codland")
+	public String showEndPage()
+	{
+		return "thank";
+		
 	}
 }

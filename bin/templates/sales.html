@@ -18,17 +18,20 @@
 					src="https://t3.ftcdn.net/jpg/02/94/87/50/360_F_294875066_WmW95xUPQ4R51in63vIcKogyq1LX8ROV.jpg"
 					class="logo" />
 				<a href="" class="navbar-brand">Fashion Focus Boutique</a>
+				<a th:href="@{/list}" class="navbar-brand">Back</a>
 				<a th:href="@{/}" class="navbar-brand">Log Out</a>
 			</nav>
 		</div>
 	</header><br>
 
-    <h2 style="color: #740074" style="text-align: center;">Sales Profit Survey!.<h2>
+    <h2 style="text-align: center;">Sales Profit Survey!.<h2>
  
 	<div class="row">
 		<div class="column">
 			<div class="text">
 				<h2 style="color: #740074"> Previous Month Of Sales Profit! .<h2>
+					<strong>$</strong>
+								<span th:text="${salesamount}"></span>
 			</div>
 			<div class="circle-wrap">
 				<div class="circle">
@@ -47,6 +50,8 @@
 		<div class="column">
 			<div class="fonts">
 				<h2 style="color: #740074"> Current Month Of Sales Profit! .<h2>
+					<strong>$</strong>
+								<span th:text="${currentMonthSales}"></span>
 			</div>
 			<div class="circle-wrap">
 				<div class="circle">
@@ -57,7 +62,7 @@
 						<div class="fill"></div>
 					</div>
 					<div class="inside-circle">
-						<h2 th:text="${currentMonthSales}"></h2>
+						<h1 th:text="${currentMonthSales}"></h1>
 					</div>
 				</div>
 			</div>
@@ -65,12 +70,13 @@
 	</div>
 	<br><br>
 	
-	<h2 style="color: #740074" style="text-align: center;">Sales Quantity ! .<h2>
+	<h2 style="text-align: center;">Sales Quantity ! .<h2>
 	
 	<div class="row">
 		<div class="column">
 			<div class="text">
 				<h2 style="color: #740074"> Last Month Of Sales Quantity! .<h2>
+					<h2 th:text="${currentMonthProductSalesCount}"></h2>
 			</div>
 			<div class="circle-wrap">
 				<div class="circle">
@@ -89,6 +95,7 @@
 		<div class="column">
 			<div class="fonts">
 				<h2 style="color: #740074"> Current Month Of Sales Quantity! .<h2>
+					<h2 th:text="${previousMonthProductSalesCount}"></h2>
 			</div>
 			<div class="circle-wrap">
 				<div class="circle">

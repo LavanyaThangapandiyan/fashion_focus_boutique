@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org" xml:lang="en">
+
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Log Out</title>
+	<title></title>
 </head>
 <style type="text/css">
 	body {
-		background: url(https://img.freepik.com/free-photo/positive-woman-red-beret-trendy-blouse-smiles-holds-bags-from-clothing-stores_197531-17592.jpg?w=2000) no-repeat center center fixed;
+		background: url(https://img.freepik.com/free-photo/young-attractive-woman-saying-yes-showing-thumbs-up-sign-approval-smiling-confident-satisfied_1258-124528.jpg) no-repeat center center fixed;
 		background-size: cover;
 	}
+
 	* {
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
 		font-family: cursive;
 	}
+
 	.chart {
 		width: 80%;
 		height: 100vh;
@@ -22,6 +25,7 @@
 		align-items: center;
 		justify-content: center;
 	}
+
 	.pop {
 		width: 400px;
 		background: #ffff;
@@ -37,17 +41,20 @@
 		transition: transform 0.0s, top 0.0s;
 		display: time 12px;
 	}
+
 	.pop img {
 		width: 100px;
 		margin-top: -50px;
 		border-radius: 50%;
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 	}
+
 	.pop h2 {
 		font-size: 30px;
 		font-weight: 500;
 		margin: 30px 0 10px;
 	}
+
 	.pop button {
 		width: 100%;
 		margin-top: 50px;
@@ -62,17 +69,18 @@
 		box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 	}
 </style>
+
 <body>
 	<div class="chart">
-		<form th:action="@{/logoutland}" method="get">
+		<form th:action="@{/codland}" method="get">
 
 			<div class="pop" id="pop">
 				<img src="/images/checked.png" alt="">
-				<h3>Come Back Soon !.</h3>
-				<br>
-				<p>Are you sure you want to Log out ?.</p>
-				<button type="submit">Continue</button> <br><br>
-				<a th:href="@{/thank}" class="navbar-brand">Cancel</a>
+				<h3>Cash On Delivery</h3>
+				<p>Pay when your order is Received!</p>
+                <strong style="color:purple;">Total Amount : $ </strong>
+								<span th:text="${session.amount}"></span>
+				<button type="submit">Continue</button>
 			</div>
 		</form>
 	</div>

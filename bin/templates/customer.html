@@ -14,99 +14,18 @@
 				<img alt=""
 					src="https://t3.ftcdn.net/jpg/02/94/87/50/360_F_294875066_WmW95xUPQ4R51in63vIcKogyq1LX8ROV.jpg"
 					class="logo" />
-				<span id="open" onclick="openNav()"> Boutique</span>
 				<a href="" class="navbar-brand">Fashion Focus Boutique</a>
+				<a th:href="@{/list}" class="navbar-brand">Back</a>
 				<a th:href="@{/}" class="navbar-brand">Log Out</a>
 			</nav>
 		</div>
 	</header>
-	<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a th:href="@{/product}">Add Products</a>
-		<a href="customer.html">Our Customers</a>
-		<a href="productlist.html">ProductList</a>
-		<a href="#">Sales</a>
-	</div>
-	<!-- Use any element to open the sidenav -->
-
-	<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-	<div id="main">
-
-	</div>
-	<style media="only screen">
+		<style media="only screen">
 		.logo {
 			max-width: 70px;
 		}
 
-		.sidenav {
-			height: 100%;
-			/* 100% Full-height */
-			width: 0;
-			/* 0 width - change this with JavaScript */
-			position: fixed;
-			/* Stay in place */
-			z-index: 1;
-			/* Stay on top */
-			top: 0;
-			/* Stay at the top */
-			left: 0;
-			background-color: #740074;
-			/* Black*/
-			overflow-x: hidden;
-			/* Disable horizontal scroll */
-			padding-top: 60px;
-			/* Place content 60px from the top */
-			transition: 0.5s;
-			/* 0.5 second transition effect to slide in the sidenav */
-		}
-
-		#open {
-			cursor: pointer;
-
-		}
-
-		/* The navigation menu links */
-		.sidenav a {
-			padding: 8px 8px 8px 32px;
-			text-decoration: none;
-			font-size: 25px;
-			color: #f1f1f1;
-			display: block;
-			transition: 0.3s;
-		}
-
-		/* When you mouse over the navigation links, change their color */
-		.sidenav a:hover {
-			color: #8a828a;
-		}
-
-		/* Position and style the close button (top right corner) */
-		.sidenav .closebtn {
-			position: absolute;
-			top: 0;
-			right: 25px;
-			font-size: 36px;
-			margin-left: 50px;
-		}
-
-		/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-		#main {
-			transition: margin-left .5s;
-			padding: 20px;
-		}
-
-		/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-		@media screen and (max-height: 450px) {
-			.sidenav {
-				padding-top: 15px;
-			}
-
-			.sidenav a {
-				font-size: 18px;
-			}
-		}
-
-		.tab {
+				.tab {
 			overflow: hidden;
 			border: 2px solid #ccc;
 			background-color: #f1f1f1;

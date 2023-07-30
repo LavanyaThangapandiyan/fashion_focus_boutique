@@ -67,19 +67,5 @@ public class WishList {
 				+ ", price=" + price + ", size=" + size + ", category=" + category + ", status=" + status + ", image="
 				+ image + "]";
 	}
-	public WishList(int customerId, int productId, String productName, int price, String size, String category,
-			String status, String image) {
-		super();
-		this.customerId = customerId;
-		this.productId = productId;
-		this.productName = productName;
-		this.price = price;
-		this.size = size;
-		this.category = category;
-		this.status = status;
-		this.image = image;
-	}
-	
-	
 
 }

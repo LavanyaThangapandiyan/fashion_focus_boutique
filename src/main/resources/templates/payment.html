@@ -7,7 +7,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Payment Form</title>
-	<link href="paymentform.css" rel="stylesheet">
 	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
 		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -28,6 +27,7 @@
 		</div>
 		</div>
 	</header>
+
 	<form th:action="@{/pay}" method="POST">
 		<div class="wrapper">
 			<h2>Payment Form</h2>
@@ -55,12 +55,15 @@
 					</div>
 				</div>
 				<div class="input-group">
+					<div class="button">
+							<a th:href="@{/cod}" style="color: white" class="navbar-brand">Cash On Delivery</a>
+						</div>
+						<br><br><br>
+						<br>
 					<div class="input-box">
 						<h4>Payment Details</h4>
 						<input type="radio" name="pay" id="bc1" checked class="radio">
 						<label for="bc1"><span><i class="fa fa-cc-visa"></i> Credit Card</span></label>
-						<input type="radio" name="pay" id="bc2" class="radio">
-						<label for="bc2"><span><i class="fa fa-cc-paypal"></i> Paypal</span></label>
 					</div>
 				</div>
 				<div class="input-group">
@@ -96,6 +99,17 @@
 			</form>
 		</div>
 		<style>
+			.button {
+				text-align: center;
+				float: right;
+				background-color: #740074;
+				border: 1px solid #740074;
+				cursor: pointer;
+				font-size: 20px;
+				width: 100%;
+				height: 100%;
+			}
+
 			.logo {
 				max-width: 70px;
 			}

@@ -24,6 +24,7 @@
 					<a th:href="@{/mywish}" class="navbar-brand"><i class="fa fa-heart-o"></i></a>
 				</div>
 				<a th:href="@{/myorder}" class="navbar-brand">My Orders</a>
+				
 				<a th:href="@{/}" class="navbar-brand">Log Out</a>
 			</nav>
 		</div>
@@ -200,7 +201,7 @@
 					<form th:action="@{/addcart}" method="GET">
 						<div class="card">
 							<img alt="" th:src="'data:images/jpg;base64,' + ${product.image}"
-								style="width: 100%; height:100%;">
+								style="width: 100%; height: 50%;">
 							<div class="card-body">
 								<a th:href="@{/addwish/{id}(id=${product.id})}">Add Wishlist<i class="fa fa-heart-o"
 										id="heart" onclick="changeColor()"></i></a>
@@ -346,53 +347,63 @@
 					box-sizing: border-box;
 				}
 
-				body {
-					background-color: #f9f6f2;
-				}
+				.logo {
+				max-width: 70px;
+			}
+			.topnav-right {
+				float: right;
+			}
 
-				.card-img-top {
-					border-radius: 50px;
-					padding: 20px;
-				}
+			* {
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+			}
 
-				.card {
-					border-radius: 30px;
-					box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-					width: 100%;
-                    height: 100% !important;
-					padding-left: 10px;
-					
-				}
+			body {
+				background-color: #f9f6f2;
+			}
 
-				.card-body {
-					padding: 25px;
-					margin-top: -15px;
-				}
+			.card-img-top {
+				border-radius: 50px;
+				padding: 20px;
+			}
 
-				.btn-primary {
-					border-radius: 50px;
-					width: 120px;
-				}
+			.card {
+				border-radius: 30px;
+				box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+				height: 100%
+			}
 
-				.btn-primary:hover {
-					background-color: black;
-					border: none;
-				}
+			.card-body {
+				padding: 25px;
+				margin-top: -15px;
+			}
 
-				h3,
-				h5 {
-					color: #740074;
-				}
+			.btn-primary {
+				border-radius: 50px;
+				width: 120px;
+			}
 
-				.card button {
-					background-color: #792099;
-					color: white;
-					border: 1px solid #792099;
-					border-radius: 5px;
-					padding: 10px;
-					margin: 10px 0px;
-					cursor: pointer;
-					font-size: 20px;
-					width: 100%;
-				}
+			.btn-primary:hover {
+				background-color: black;
+				border: none;
+			}
+
+			h3,
+			h5 {
+				color: #740074;
+			}
+
+			.card button {
+				background-color: #792099;
+				color: white;
+				border: 1px solid #792099;
+				border-radius: 5px;
+				padding: 10px;
+				margin: 10px 0px;
+				cursor: pointer;
+				font-size: 20px;
+				width: 100%;
+			}
 			</style>

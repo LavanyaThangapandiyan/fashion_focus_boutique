@@ -16,14 +16,15 @@
 					src="https://t3.ftcdn.net/jpg/02/94/87/50/360_F_294875066_WmW95xUPQ4R51in63vIcKogyq1LX8ROV.jpg"
 					class="logo" />
 				<a href="" class="navbar-brand">Fashion Focus Boutique</a>
-			</nav>
-			<div class="topnav-right">
+				<a th:href="@{/list}" class="navbar-brand">Back</a>
 				<a th:href="@{/}" class="navbar-brand">Log Out</a>
-			</div>
 			</nav>
 		</div>
 	</header>
-	<a th:href="@{/product}" class="btn btn-primary btn-sm mb-3"> Add Product </a>
+	<br><br>
+	<div class="button">
+	<a th:href="@{/product}"style="color: white" class="navbar-brand"> Add Product </a>
+	</div><br><br><br>
 	<table id="example" class="table table-bordered" aria-describedby="mydesc">
 		<thead style="background-color: purple">
 			<tr>
@@ -96,6 +97,14 @@
 		</tbody>
 	</table>
 	<style>
+		.button {
+			float: right;
+			background-color: #792099;
+			border: 1px solid #792099;
+			cursor: pointer;
+			font-size: 20px;
+			width: 10%;
+		}
 		.logo {
 			max-width: 70px;
 		}
@@ -104,10 +113,6 @@
 		td {
 			text-align: center;
 			vertical-align: middle;
-		}
-
-		.topnav-right {
-			float: right;
 		}
 	</style>
 

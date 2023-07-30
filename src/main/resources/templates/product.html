@@ -11,57 +11,18 @@
 	<header>
 		<div class="tab">
 			<nav class="navbar navbar-expand-md navbar-dark" style="background-color: #740074">
-				<span id="open" onclick="openNav()">Boutique</span>
+
 				<img alt="logo"
 					src="https://t3.ftcdn.net/jpg/02/94/87/50/360_F_294875066_WmW95xUPQ4R51in63vIcKogyq1LX8ROV.jpg"
 					class="logo" />
 				<a href="" class="navbar-brand">Fashion Focus Boutique</a>
+				<a th:href="@{/list}" class="navbar-brand">Back</a>
 				<a th:href="@{/}" class="navbar-brand">Log Out</a>
 			</nav>
 		</div>
 	</header>
-	<div id="mySidenav" class="sidenav">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a th:href="@{/product}">Add Products</a>
-		<a href="item.html">Products</a>
-		<a href="customer.html">Our Customers</a>
-		<a href="productlist.html">ProductList</a>
-		<a href="sales.htmls">Sales</a>
-	</div>
-	<!-- Use any element to open the sidenav -->
-
-	<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-	<div id="main">
-
-	</div>
-	<script>
-		function openNav() {
-			document.getElementById("mySidenav").style.width = "250px";
-			document.getElementById("main").style.marginLeft = "250px";
-			document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-		}
-
-		/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
-		function closeNav() {
-			document.getElementById("mySidenav").style.width = "0";
-			document.getElementById("main").style.marginLeft = "0";
-			document.body.style.backgroundColor = "white";
-		}
-		function increaseValue() {
-			var value = parseInt(document.getElementById('number').value, 10);
-			value = isNaN(value) ? 0 : value;
-			value++;
-			document.getElementById('number').value = value;
-		}
-
-		function decreaseValue() {
-			var value = parseInt(document.getElementById('number').value, 10);
-			value = isNaN(value) ? 0 : value;
-			if (value > 1)
-				value--;
-			document.getElementById('number').value = value;
-		}
-	</script>
+	
+	
 	<div class="container">
 		<form id="form" action="product" th:action="@{/productsubmit}" th:object="${product}" method="POST"
 			enctype="multipart/form-data">
@@ -135,57 +96,7 @@
 			text-indent: 30px;
 		}
 
-		.sidenav {
-			height: 100%;
-			/* 100% Full-height */
-			width: 0;
-			/* 0 width - change this with JavaScript */
-			position: fixed;
-			/* Stay in place */
-			z-index: 1;
-			/* Stay on top */
-			top: 0;
-			/* Stay at the top */
-			left: 0;
-			background-color: #740074;
-			/* Black*/
-			overflow-x: hidden;
-			/* Disable horizontal scroll */
-			padding-top: 60px;
-			/* Place content 60px from the top */
-			transition: 0.5s;
-			/* 0.5 second transition effect to slide in the sidenav */
-		}
-
-		#open {
-			cursor: pointer;
-
-		}
-
-		/* The navigation menu links */
-		.sidenav a {
-			padding: 8px 8px 8px 32px;
-			text-decoration: none;
-			font-size: 25px;
-			color: #f1f1f1;
-			display: block;
-			transition: 0.3s;
-		}
-
-		/* When you mouse over the navigation links, change their color */
-		.sidenav a:hover {
-			color: #8a828a;
-		}
-
-		/* Position and style the close button (top right corner) */
-		.sidenav .closebtn {
-			position: absolute;
-			top: 0;
-			right: 25px;
-			font-size: 36px;
-			margin-left: 50px;
-		}
-
+		
 		#op {
 			width: 100px;
 		}

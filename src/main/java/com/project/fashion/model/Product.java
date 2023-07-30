@@ -82,20 +82,6 @@ public class Product {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public Product(int id, String name, int price, String type, String size, int quantity, String fabric, String image,
-			String gender, String available) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.price = price;
-		this.type = type;
-		this.size = size;
-		this.quantity = quantity;
-		this.fabric = fabric;
-		this.image = image;
-		this.gender = gender;
-		this.available = available;
-	}
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", type=" + type + ", size=" + size

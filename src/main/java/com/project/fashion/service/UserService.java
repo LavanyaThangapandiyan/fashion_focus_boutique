@@ -161,4 +161,8 @@ public class UserService
 		return userDao.getOrderHistoryList(userId);
 		
 	}
+	public void afterOrderClearCart(HttpSession session)
+	{
+		userDao.afterOrderClearCart(session);
+	}
 }

@@ -140,7 +140,7 @@ public class ProductController {
 	@ExceptionHandler(ExistCategoryException.class)
 	public String existCategoryException(ExistCategoryException exception, Model model) {
 		model.addAttribute("existcategory", "Category Already Exist.");
-		return "new_category";
+		return "error";
 
 	}
 

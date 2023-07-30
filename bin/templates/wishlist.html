@@ -25,6 +25,14 @@
 
 	<div class="container py-5">
 		<h1 class="text-center">Your WishList Product</h1>
+
+		<div class="button">
+			<a th:href="@{/products}" style="color: white" class="navbar-brand">Add Products</a>
+		</div>
+		<br><br><br>
+		<br>
+
+
 		<div class="row row-cols-1 row-cols-md-3 g-4 py-5">
 			<tr th:each="wish, itemStat : *{wishlist}">
 			<tr th:each="wish : ${wishlist}">
@@ -64,6 +72,15 @@
 			</tr>
 
 			<style>
+				
+				.button {
+			float: right;
+			background-color: #792099;
+			border: 1px solid #792099;
+			cursor: pointer;
+			font-size: 20px;
+			width: 10%;
+		}
 				.logo {
 					max-width: 70px;
 				}
