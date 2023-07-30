@@ -414,7 +414,6 @@ public class UserDao implements UserInterface {
 	// -------------------Payment CRUD--------------------
 	// ---Save Payment Details---
 	public void savePaymentDetails(Payment payment, HttpSession session) {
-		int userId = (int) session.getAttribute("id");
 		LocalDate today = LocalDate.now();
 		String insert = "insert into payment(user_name,email,amount,payment_type,card_number,cvv,month,year,Date)values(?,?,?,?,?,?,?,?,?)";
 		Object[] details = { payment.getUserName(), payment.getEmail(), payment.getAmount(), payment.getPaymentType(),
