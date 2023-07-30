@@ -427,18 +427,6 @@ public class UserDao implements UserInterface {
 		 Object[] inserts= {payment.getAmount(),today};
 		 int salesUpdate = jdbcTemplate.update(insertSales,inserts);
 		 logger.info("Inserted Sales Details : "+salesUpdate);
-		
-		 //--After Order Process Complete Delete Orders Details---
-		  String delete="delete from orders where customer_id=?"; 
-		  Object[] detail={userId}; 
-		  int deleteOrder = jdbcTemplate.update(delete,detail);
-		  logger.info(" After Payment Clear Orders : "+deleteOrder);
-		  
-		  //---After Order Empty to  Cart----
-		  String clearCart="delete from cart where customer_id=?";
-		  Object[] deleteCart={userId};
-		  int deletesCart=jdbcTemplate.update(clearCart,deleteCart);
-		  logger.info("After Payment Clear Cart : "+deletesCart);
 	}
 	
 	public void afterOrderClearCart(HttpSession session)

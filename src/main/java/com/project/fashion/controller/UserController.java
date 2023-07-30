@@ -245,9 +245,7 @@ public class UserController {
 	}
 
 	@GetMapping("/payment")
-	public String showPaymentForm(HttpSession session, Model model) {
-		int userId = (int) session.getAttribute("id");
-		model.addAttribute("amount", userService.getTotalAmountOrder(userId, session));
+	public String showPaymentForm() {
 		return "payment";
 	}
 
@@ -326,31 +324,26 @@ public class UserController {
 	
 	@GetMapping("/logout")
 	public String getLogOutRequest(Model model,HttpSession session)
-	{
-		
-		return "logoutpopup";
-		
+	{	
+		return "logoutpopup";	
 	}
 	
 	@GetMapping("/logoutland")
 	public String getLogoutConfirmation(HttpSession session)
-	{
+	{	
+		userService.afterOrderClearCart(session);
 		session.invalidate();
 		return "index";
 	}
 	
 	@GetMapping("/cod")
-	public String showCodForm(Model model,HttpSession session)
-	{
-		int userId = (int) session.getAttribute("id");
-		model.addAttribute("amount", userService.getTotalAmountOrder(userId, session));
-		userService.afterOrderClearCart(session);
+	public String showCodForm(HttpSession session)
+	{	
 		return "cod";
 	}
 	@GetMapping("/codland")
-	public String showEndPage()
+	public String showEndPage(HttpSession session)
 	{
 		return "thank";
-		
 	}
 }
