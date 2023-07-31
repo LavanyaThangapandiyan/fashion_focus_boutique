@@ -17,9 +17,11 @@
 	<ul>
 	<li><h3>Front-End Development:</h3>
 		<ul>
-	<li>JSP</li>
+	<li>Thymeleaf</li>
 	<li>HTML</li>
-			<li>CSS</li></ul>
+			<li>CSS</li>
+			<li>Java Script</li></ul>
+		</ul>
 	<li><h3>Back-End Development:</h3>
 		<ul>
 	<li>Java(JDK 17)</li>
