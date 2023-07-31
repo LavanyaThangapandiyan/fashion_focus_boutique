@@ -45,6 +45,13 @@ public class ProductController {
 			else
 				return "product";		
 	}
+	// ---Handling Exist Product Exception ----
+			@ExceptionHandler(ExistProductException.class)
+			public String existProductException(ExistProductException exception, Model model) {
+				model.addAttribute("errormessage", "Product Already Exist");
+				return "error";
+			}
+
 	
 	@GetMapping(path = "/updateproduct")
 	public String updateProduct(@RequestParam("name") String name, @RequestParam("price") int price,
@@ -98,13 +105,7 @@ public class ProductController {
 		return "product";
 	}
 	
-	// ---Handling Exist Product Exception ----
-		@ExceptionHandler(ExistProductException.class)
-		public String existProductException(ExistProductException exception, Model model) {
-			model.addAttribute("existproduct", "Product Already Exist");
-			return "error";
-		}
-
+	
 		// --Display List of Category
 		@GetMapping("/category")
 		public String viewCategoryPage(Model model) {
@@ -139,7 +140,7 @@ public class ProductController {
 	// ----Handling Exist Category Exception ----
 	@ExceptionHandler(ExistCategoryException.class)
 	public String existCategoryException(ExistCategoryException exception, Model model) {
-		model.addAttribute("existcategory", "Category Already Exist.");
+		model.addAttribute("errormessage", "Category Already Exist.");
 		return "error";
 
 	}

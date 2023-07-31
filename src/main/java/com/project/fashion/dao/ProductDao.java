@@ -28,25 +28,35 @@ public class ProductDao implements ProductInterface {
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
 	Product product = new Product();
 	String productAvailability = "Available";
-
 	// ----Insert Product Details
-	public int saveProductDetails(Product product) throws ExistProductException {
+	public int saveProductDetails(Product product) throws ExistProductException
+	{
+		List<Product> productList=allProductList();
+		String getProduct=productList.toString();
+		String productName=product.getName();
+		boolean contains=getProduct.contains(productName);
+		if(contains)
+		{
+			throw new ExistProductException("Product Name Already Exists.");
+			
+		}else {
 		String insert = "insert into product(name,price,category,size,quantity,fabric,gender,image,is_available)values(?,?,?,?,?,?,?,?,?)";
 		String input = product.getName();
-		String productName = input.substring(0, 1).toUpperCase() + input.substring(1);
+		String productName1 = input.substring(0, 1).toUpperCase() + input.substring(1);
 		String inputFabric = product.getFabric();
 		String fabricName = inputFabric.substring(0, 1).toUpperCase() + inputFabric.substring(1);
-		boolean name = valid.nameValidation(productName);
+		boolean name = valid.nameValidation(productName1);
 		boolean size = valid.nameValidation(product.getSize());
 		boolean fabric = valid.nameValidation(product.getFabric());
 		if (name && size && fabric) {
-			Object[] details = { productName, product.getPrice(), product.getType(), product.getSize(),
+			Object[] details = { productName1, product.getPrice(), product.getType(), product.getSize(),
 					product.getQuantity(), fabricName, product.getGender(), product.getImage(), productAvailability };
 			int numberOfRows = jdbcTemplate.update(insert, details);
 			logger.info("Inserted Rows : " + numberOfRows);
 			return 1;
 		} else
 			logger.error("Invalid Product Details");
+		}
 		return 0;
 	}
 

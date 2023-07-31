@@ -83,7 +83,7 @@
 					</form>
 				</tr>
 				<tr>
-					<form id="form" th:action="@{/filter}" th:object="${product}" method="Get">
+					<form id="form" th:action="@{/chiffon}" th:object="${product}" method="Get">
 						<td> <button type="submit">Chiffon Sarees</button></td>
 					</form>
 					<form id="form" th:action="@{/anarkali}" th:object="${product}" method="Get">
@@ -124,9 +124,6 @@
 					<form id="form" th:action="@{/plazzo}" th:object="${product}" method="Get">
 						<td> <button type="submit">Plazzos</button></td>
 					</form>
-					<form id="form" th:action="@{/shorts}" th:object="${product}" method="Get">
-						<td> <button type="submit">Shorts</button></td>
-					</form>
 				</tr>
 				<tr>
 					<form id="form" th:action="@{/sweaters}" th:object="${product}" method="Get">
@@ -151,21 +148,14 @@
 			</thead>
 			<tbody>
 				<tr>
-					<form id="form" th:action="@{/tshirt}" th:object="${product}" method="Get">
-						<td> <button type="submit">Tshirts</button></td>
+					<form id="form" th:action="@{/topwear}" th:object="${product}" method="Get">
+						<td> <button type="submit">Top Wer</button></td>
 					</form>
-					<form id="form" th:action="@{/mentrack}" th:object="${product}" method="Get">
-						<td> <button type="submit">Track pants</button></td>
-					</form>
-				</tr>
-				<tr>
-					<form id="form" th:action="@{/shirt}" th:object="${product}" method="Get">
-						<td> <button type="submit">Shirts</button></td>
-					</form>
-					<form id="form" th:action="@{/jeansmen}" th:object="${product}" method="Get">
-						<td> <button type="submit">Jeans</button></td>
+					<form id="form" th:action="@{/mbottom}" th:object="${product}" method="Get">
+						<td> <button type="submit">Bottom Wear</button></td>
 					</form>
 				</tr>
+				
 			</tbody>
 		</table>
 	</div>

@@ -15,7 +15,7 @@ public class HomeController
 	{
 		return "filter";
 	}
-	@GetMapping("/wanted")
+	@GetMapping("/chiffon")
 	public String showChiffonSarees(Model model)
 	{
 		String name="Chiffon Sarees";
@@ -105,7 +105,7 @@ public class HomeController
 	@GetMapping("/tops")
 	public String showTops(Model model)
 	{
-		String name="Tops";
+		String name="Western";
 		model.addAttribute("filterlist",userService.allProductList(name));
 		return "filter";
 	}
@@ -140,13 +140,6 @@ public class HomeController
 		model.addAttribute("filterlist",userService.allProductList(name));
 		return "filter";
 	}
-	@GetMapping("/shorts")
-	public String showShortsList(Model model)
-	{
-		String name="Shorts";
-		model.addAttribute("filterlist",userService.allProductList(name));
-		return "filter";
-	}
 	
 	@GetMapping("/sweaters")
 	public String showSweatersList(Model model)
@@ -172,39 +165,24 @@ public class HomeController
 		return "filter";
 	}
 	
-	@GetMapping("/shirt")
-	public String showAllMenShirt(Model model)
+	@GetMapping("/topwear")
+	public String showAllMenTop(Model model)
 	{
-		String name="Shirt";
+		String name="Men Top Wear";
 		model.addAttribute("filterlist",userService.allProductList(name));
 		return "filter";
 	}
-	@GetMapping("/tshirt")
-	public String showAllTshirt(Model model)
+	@GetMapping("/mbottom")
+	public String showAllBottom(Model model)
 	{
-		String name="Tshirt";
-		model.addAttribute("filterlist",userService.allProductList(name));
-		return "filter";
-	}
-	
-	@GetMapping("/jeansmen")
-	public String showMenJeans(Model model)
-	{
-		String name="Men Jeans";
-		model.addAttribute("filterlist",userService.allProductList(name));
-		return "filter";
-	}
-	@GetMapping("/mentrack")
-	public String showMenTreackList(Model model)
-	{
-		String name="Men Tracks";
+		String name="Men Bottom wear";
 		model.addAttribute("filterlist",userService.allProductList(name));
 		return "filter";
 	}
 	@GetMapping("/kids")
 	public String showAllKids(Model model)
 	{
-		String name="Kids";
+		String name="Kidz";
 		model.addAttribute("filterlist",userService.allProductList(name));
 		return "filter";
 	}
