@@ -14,7 +14,7 @@ public class HomeController {
 		return "filter";
 	}
 
-	@GetMapping("/chiffon")
+	@GetMapping("/chiffon") 
 	public String showChiffonSarees(Model model) {
 		String name = "Chiffon Sarees";
 		model.addAttribute("filterlist", userService.allProductList(name));

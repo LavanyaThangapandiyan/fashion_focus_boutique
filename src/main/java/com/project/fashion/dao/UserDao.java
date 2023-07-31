@@ -41,7 +41,6 @@ public class UserDao implements UserInterface {
 	Logger logger = LoggerFactory.getLogger(UserDao.class);
 	Validation valid = new Validation();
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
-
 	// ----Inserting User Details
 	public int saveDetails(User user, Model model)
 			throws ExistMailIdException, ExistMobileException, JsonProcessingException {
@@ -66,7 +65,8 @@ public class UserDao implements UserInterface {
 			boolean email1 = valid.emailValidation(user.getEmail());
 			boolean password1 = valid.passwordValidation(user.getPassword());
 			boolean phone = valid.phoneNumberValidation(user.getMobile());
-			if (name && email1 && phone && password1) {
+			if (name && email1 && phone && password1)
+			{
 				String input = user.getName();
 				String userName = input.substring(0, 1).toUpperCase() + input.substring(1);
 				Object[] details = { userName, user.getEmail(), encodedPassword, user.getMobile(), user.getGender() };
@@ -154,7 +154,6 @@ public class UserDao implements UserInterface {
 	}
 
 	// ----Cart CRUD----
-
 	// ----save Cart details--
 	Cart cart = new Cart();
 
@@ -184,7 +183,6 @@ public class UserDao implements UserInterface {
 				logger.info("Updated Quantity : " + update2);
 				return 1;
 			}
-
 		}
 		String find = "select id,name,price,category,size,quantity,fabric,gender,image from product where id=?";
 		Product getDetails = jdbcTemplate.queryForObject(find, new ProductMapperAll(), id);

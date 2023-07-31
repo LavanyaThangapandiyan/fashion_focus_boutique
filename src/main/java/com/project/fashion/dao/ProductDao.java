@@ -72,7 +72,8 @@ public class ProductDao implements ProductInterface {
 	}
 
 	// Get Product List
-	public List<Product> allProductList() {
+	public List<Product> allProductList() 
+	{
 		List<Product> productList;
 		String find = "select id,name,price,category,size,quantity,fabric,gender,image from product where is_available='Available'";
 		productList = jdbcTemplate.query(find, new ProductMapperAll());
@@ -80,7 +81,8 @@ public class ProductDao implements ProductInterface {
 	}
 
 	// Get Inactive Product List
-	public List<Product> inActiveProductList() {
+	public List<Product> inActiveProductList() 
+	{
 		List<Product> productList;
 		String find = "select id,name,price,category,size,quantity,fabric,gender,image from product where is_available='Not Available'";
 		productList = jdbcTemplate.query(find, new ProductMapperAll());
@@ -197,7 +199,7 @@ public class ProductDao implements ProductInterface {
 	// ---Sales List----
 	public long getSalesList() {
 		long salesAmount = 0;
-		// --Query For Using Only Take Last Month Of Sales
+		// --Query For Using Only Take Last Month Of Sales Profit
 		String findMonthlySales = "select SUM(counts) from sales where month(Date)=month(now())-1";
 		List<Sales> query = jdbcTemplate.query(findMonthlySales, new SalesAmountMapper());
 		for (Sales sales : query) {
@@ -208,7 +210,7 @@ public class ProductDao implements ProductInterface {
 
 	public long getCurrentMonthSales() {
 		long salesAmount = 0;
-		// --Query For Using Only Take Current Month Of Sales
+		// --Query For Using Only Take Current Month Of Sales Profit
 		String findMonthlySales = "select SUM(counts) from sales where month(Date)=month(now())-0";
 		List<Sales> query = jdbcTemplate.query(findMonthlySales, new SalesAmountMapper());
 		for (Sales sales : query) {

@@ -13,7 +13,6 @@ public class Validation {
 		if (names)
 			return true;
 		return names;
-
 	}
 
 	public String adminEmailValidation(String email) {

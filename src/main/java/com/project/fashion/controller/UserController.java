@@ -30,6 +30,7 @@ public class UserController {
 	Validation valid = new Validation();
 	Product product = new Product();
 	User users = new User();
+	
 	@Value("${email:}")
 	String email;
 

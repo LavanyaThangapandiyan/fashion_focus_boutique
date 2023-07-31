@@ -6,5 +6,4 @@ public class ExistCategoryException extends Exception {
 	public ExistCategoryException(String s) {
 		super(s);
 	}
-
 }
