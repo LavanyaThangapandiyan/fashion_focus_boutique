@@ -1,6 +1,6 @@
 # fashion_focus_project-
  User Manual: https://docs.google.com/document/d/15hfuCqlIugGs2gGa1zs4Vih3g1FeAIGUvNi2cbv4Yts/edit
- PPT : https://docs.google.com/presentation/d/1Me4LsfYU1lS89_745DmPfkF8Omk4iMSKkImcxwHDx4g/edit?usp=sharing
+ - PPT: https://docs.google.com/presentation/d/1Me4LsfYU1lS89_745DmPfkF8Omk4iMSKkImcxwHDx4g/edit?usp=sharing
 <div align="center"> <h2>Fashion Focus Boutique</h2></div>	
 <h3>Features in  Fashion Focus Boutique</h3>
 <br>
