@@ -9,7 +9,7 @@
 	<li>Shopping Cart</li>
 	<li>Convenient browsing</li>
 	<li>Product Page</li>
-	<li>	Search Bar</li>
+	<li>	Filter</li>
 	<li>Wish List</li>
 	<li>Payment Option</li>
 	<li>Customer Service contact </li></ul>
