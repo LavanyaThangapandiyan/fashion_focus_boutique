@@ -57,46 +57,59 @@ public class Order {
 	public int getCustomerId() {
 		return customerId;
 	}
+
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
+
 	public int getProductId() {
 		return productId;
 	}
+
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
+
 	public int getPrice() {
 		return price;
 	}
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
 	public String getSize() {
 		return size;
 	}
+
 	public void setSize(String size) {
 		this.size = size;
 	}
+
 	public String getCategory() {
 		return category;
 	}
+
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
 	public int getQuantity() {
 		return quantity;
 	}
+
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
+
 	public Order() {
 		super();
 	}
@@ -108,8 +121,4 @@ public class Order {
 				+ ", quantity=" + quantity + ", status=" + status + ", amount=" + amount + ", image=" + image + "]";
 	}
 
-	
-	
-
-	
 }

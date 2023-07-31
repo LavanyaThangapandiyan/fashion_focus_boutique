@@ -18,9 +18,9 @@ import com.project.fashion.model.Product;
 import com.project.fashion.service.ProductService;
 
 @Controller
-public class ProductController {	
-	
-	ProductService productService=new ProductService();
+public class ProductController {
+
+	ProductService productService = new ProductService();
 	Product product = new Product();
 	Category category = new Category();
 
@@ -29,30 +29,30 @@ public class ProductController {
 			@RequestParam("price") int price, @RequestParam("category") String type, @RequestParam("size") String size,
 			@RequestParam("quantity") int quantity, @RequestParam("gender") String gender,
 			@RequestParam("fabric") String fabric, @ModelAttribute("Product") Product product)
-	  throws  IOException, ExistProductException {
-		
-	    product.setName(name);
+			throws IOException, ExistProductException {
+
+		product.setName(name);
 		product.setPrice(price);
 		product.setType(type);
 		product.setSize(size);
 		product.setQuantity(quantity);
 		product.setFabric(fabric);
 		product.setGender(gender);
-	    product.setImage(Base64.getEncoder().encodeToString(images.getBytes()));
-	        int number = productService.saveProducts(product);
-			if (number == 1)
-				return "redirect:/allproduct";
-			else
-				return "product";		
+		product.setImage(Base64.getEncoder().encodeToString(images.getBytes()));
+		int number = productService.saveProducts(product);
+		if (number == 1)
+			return "redirect:/allproduct";
+		else
+			return "product";
 	}
-	// ---Handling Exist Product Exception ----
-			@ExceptionHandler(ExistProductException.class)
-			public String existProductException(ExistProductException exception, Model model) {
-				model.addAttribute("errormessage", "Product Already Exist");
-				return "error";
-			}
 
-	
+	// ---Handling Exist Product Exception ----
+	@ExceptionHandler(ExistProductException.class)
+	public String existProductException(ExistProductException exception, Model model) {
+		model.addAttribute("errormessage", "Product Already Exist");
+		return "error";
+	}
+
 	@GetMapping(path = "/updateproduct")
 	public String updateProduct(@RequestParam("name") String name, @RequestParam("price") int price,
 			@RequestParam("type") String type, @RequestParam("size") String size,
@@ -69,59 +69,56 @@ public class ProductController {
 		productService.updateProductDetails(id, name, price, size, quantity, fabric, gender);
 		return "redirect:allproduct";
 	}
-	
+
 	@GetMapping("/allproduct")
-	public String viewProductPage(Model model) 
-	{	
+	public String viewProductPage(Model model) {
 		model.addAttribute("allproduct", productService.allProductList());
 		model.addAttribute("inActiveproducts", productService.inActiveProductList());
 		return "/allproduct";
 	}
-	
+
 	@GetMapping("/update/{id}")
 	public String showFormProductUpdate(@PathVariable(value = "id") int id, Model model) {
 		Product products = productService.getProductById(id);
 		model.addAttribute("product", products);
 		return "/update_product";
 	}
-   
+
 	@GetMapping("/deleteproduct/{id}")
 	public String unActiveProduct(@PathVariable(value = "id") int id) {
 		this.productService.deleteProduct(id);
 		return "redirect:/allproduct";
 	}
-    
+
 	@GetMapping("/active/{id}")
 	public String activeProduct(@PathVariable(value = "id") int id) {
 		this.productService.activeProduct(id);
 		return "redirect:/allproduct";
 	}
 
-	//---
+	// ---
 	@GetMapping(path = "/product")
-	public String getCategoryForm(Model model)
-	{
+	public String getCategoryForm(Model model) {
 		model.addAttribute("nameList", productService.getCategoryName());
 		return "product";
 	}
-	
-	
-		// --Display List of Category
-		@GetMapping("/category")
-		public String viewCategoryPage(Model model) {
-			model.addAttribute("listCategory", productService.categoryList());
-			model.addAttribute("unActiveList", productService.inActiveCategoryList());
-			return "category";
-		}
 
-		@PostMapping(path = "/updatesubmit")
-		public String updateCategoryName(@RequestParam("categoryName") String name, @RequestParam("id") int id) {
-			category.setId(id);
-			category.setCategoryName(name);
-			productService.updateCategoryName(id, name);
-			return "redirect:/category";
-		}
-	
+	// --Display List of Category
+	@GetMapping("/category")
+	public String viewCategoryPage(Model model) {
+		model.addAttribute("listCategory", productService.categoryList());
+		model.addAttribute("unActiveList", productService.inActiveCategoryList());
+		return "category";
+	}
+
+	@PostMapping(path = "/updatesubmit")
+	public String updateCategoryName(@RequestParam("categoryName") String name, @RequestParam("id") int id) {
+		category.setId(id);
+		category.setCategoryName(name);
+		productService.updateCategoryName(id, name);
+		return "redirect:/category";
+	}
+
 	@GetMapping("/newcategory")
 	public String showNewCategoryForm(Model model) {
 		// create model attribute to bind form data
@@ -152,7 +149,6 @@ public class ProductController {
 		return "update";
 	}
 
-
 	@GetMapping("/deletecategory/{id}")
 	public String deleteCategoryById(@PathVariable(value = "id") int id) {
 		// call delete Category method
@@ -165,18 +161,17 @@ public class ProductController {
 		this.productService.activeCategoryDetails(id);
 		return "redirect:/category";
 	}
-	
+
 	@GetMapping(path = "/sales")
-	public String showSales(Model model)
-	{
+	public String showSales(Model model) {
 		long salesList = productService.getSalesList();
-		model.addAttribute("salesamount",salesList);
+		model.addAttribute("salesamount", salesList);
 		long currentMonthSales = productService.getCurrentMonthSales();
-		model.addAttribute("currentMonthSales",currentMonthSales);
+		model.addAttribute("currentMonthSales", currentMonthSales);
 		long currentMonthProductSales = productService.getCurrentMonthProductSales();
-		model.addAttribute("currentMonthProductSalesCount",currentMonthProductSales);
+		model.addAttribute("currentMonthProductSalesCount", currentMonthProductSales);
 		long previousProductSales = productService.getPreviousProductSales();
-		model.addAttribute("previousMonthProductSalesCount",previousProductSales);
+		model.addAttribute("previousMonthProductSalesCount", previousProductSales);
 		return "sales";
 	}
 }

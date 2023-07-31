@@ -1,6 +1,5 @@
 package com.project.fashion.service;
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -20,149 +19,131 @@ import com.project.fashion.model.User;
 import com.project.fashion.model.WishList;
 
 @Service
-public class UserService  
-{
-	UserDao userDao=new UserDao();
-	
-	public List<Product> allProductList1(String category)
-	{
+public class UserService {
+	UserDao userDao = new UserDao();
+
+	public List<Product> allProductList1(String category) {
 		return userDao.allProductList(category);
 	}
-	
-	public int saveDetails(User user,Model model) throws ExistMailIdException, ExistMobileException, JsonProcessingException
-	{
+
+	public int saveDetails(User user, Model model)
+			throws ExistMailIdException, ExistMobileException, JsonProcessingException {
 		return userDao.saveDetails(user, model);
 	}
-	public int  findUserDetails(User user) throws InvalidEmailException
-	{
+
+	public int findUserDetails(User user) throws InvalidEmailException {
 		return userDao.findUserDetails(user);
 	}
-	public void  findIdByEmail(String email, HttpSession session)
-	{
+
+	public void findIdByEmail(String email, HttpSession session) {
 		userDao.findIdByEmail(email, session);
 	}
-	
-	public int  updateUserPassword(User user,Model model) throws InvalidEmailException, JsonProcessingException
-	{
+
+	public int updateUserPassword(User user, Model model) throws InvalidEmailException, JsonProcessingException {
 		return userDao.updateUserPassword(user, model);
 	}
-	
-	public List<User> userList(Model model) throws JsonProcessingException
-	{
+
+	public List<User> userList(Model model) throws JsonProcessingException {
 		return userDao.userList(model);
 	}
-	
-	public void deleteUserDetails(User user)
-	{
+
+	public void deleteUserDetails(User user) {
 		userDao.deleteUserDetails(user);
 	}
-	
-	
-	public void updateOrderDetails(int id, String size, int quantity, int amount, int userId)
-	{
+
+	public void updateOrderDetails(int id, String size, int quantity, int amount, int userId) {
 		userDao.updateOrderDetails(id, size, quantity, amount, userId);
 	}
-	
-	public Cart getcartUpdateDetails(int cartId)
-	{
+
+	public Cart getcartUpdateDetails(int cartId) {
 		return userDao.getcartUpdateDetails(cartId);
 	}
-	
-	public void  saveCartDetails(int userId, int id, String productName, int price, String type, int quantity,
-			String size)
-	{
+
+	public void saveCartDetails(int userId, int id, String productName, int price, String type, int quantity,
+			String size) {
 		userDao.saveCartDetails(userId, id, productName, price, type, quantity, size);
 	}
-	
-	public void cancelCartDetails(int id)
-	{
+
+	public void cancelCartDetails(int id) {
 		userDao.cancelCartDetails(id);
 	}
-	
-	public void clicktoActiveCartDetails(int id)
-	{
+
+	public void clicktoActiveCartDetails(int id) {
 		userDao.clicktoActiveCartDetails(id);
 	}
-	public List<Cart> cartList(int customerId)
-	{
+
+	public List<Cart> cartList(int customerId) {
 		return userDao.cartList(customerId);
 	}
-	
-	public List<Cart> inActiveCartList(int customerId)
-	{
+
+	public List<Cart> inActiveCartList(int customerId) {
 		return userDao.inActiveCartList(customerId);
 	}
-	
-	public List<Product> allProductList(String category)
-	{
+
+	public List<Product> allProductList(String category) {
 		return userDao.allProductList(category);
 	}
-	public void saveOrderDetails(int userId)
-	{
+
+	public void saveOrderDetails(int userId) {
 		userDao.saveOrderDetails(userId);
 	}
-	
-	public void cancelOrder(int id)
-	{
+
+	public void cancelOrder(int id) {
 		userDao.cancelOrder(id);
 	}
-	public Order getorderUpdateDetails(int orderId)
-	{
+
+	public Order getorderUpdateDetails(int orderId) {
 		return userDao.getorderUpdateDetails(orderId);
 	}
-	
-	public List<Order> getOrdersList(int userId)
-	{
+
+	public List<Order> getOrdersList(int userId) {
 		return userDao.getOrdersList(userId);
 	}
+
 	public List<Order> getCancelledOrdersList(int userId) {
 		return userDao.getCancelledOrdersList(userId);
-		
+
 	}
-	public int saveWishList(int  id,int userId) throws IOException
-	{
+
+	public int saveWishList(int id, int userId) throws IOException {
 		return userDao.saveWishList(id, userId);
-		
+
 	}
-	
-	public List<WishList> getWishListById(int customerId)
-	{
+
+	public List<WishList> getWishListById(int customerId) {
 		return userDao.getWishListById(customerId);
 	}
 
-	public void activeAndInActiveWishList(int wishListId)
-	{
+	public void activeAndInActiveWishList(int wishListId) {
 		userDao.activeAndInActiveWishList(wishListId);
 	}
-	public List<Order> getTotalAmountOrder(int userId,HttpSession session)
-	{
+
+	public List<Order> getTotalAmountOrder(int userId, HttpSession session) {
 		return userDao.getTotalAmountOrder(userId, session);
 	}
-	
-	public void saveAlterTable(int userId)
-	{
+
+	public void saveAlterTable(int userId) {
 		userDao.saveAlterTable(userId);
 	}
-	public int reOrder(int id)
-	{
+
+	public int reOrder(int id) {
 		return userDao.reOrder(id);
 	}
-	
-	public void savePaymentDetails(Payment payment, HttpSession session)
-	{
+
+	public void savePaymentDetails(Payment payment, HttpSession session) {
 		userDao.savePaymentDetails(payment, session);
 	}
-	public  void paymentList() 
-	{
+
+	public void paymentList() {
 		userDao.paymentList();
 	}
-	public List<Order> getOrderHistoryList(int userId)
-	{
+
+	public List<Order> getOrderHistoryList(int userId) {
 		return userDao.getOrderHistoryList(userId);
-		
+
 	}
-	public void afterOrderClearCart(HttpSession session)
-	{
+
+	public void afterOrderClearCart(HttpSession session) {
 		userDao.afterOrderClearCart(session);
 	}
 }

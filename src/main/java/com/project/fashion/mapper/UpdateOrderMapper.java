@@ -11,10 +11,10 @@ public class UpdateOrderMapper implements RowMapper<Order> {
 
 	@Override
 	public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
-		Order order=new Order();
-		int id=rs.getInt("id");
-		int quantity=rs.getInt("quantity");
-		int amount=rs.getInt("total_amount");
+		Order order = new Order();
+		int id = rs.getInt("id");
+		int quantity = rs.getInt("quantity");
+		int amount = rs.getInt("total_amount");
 		order.setId(id);
 		order.setQuantity(quantity);
 		order.setAmount(amount);

@@ -11,11 +11,11 @@ public class UpdateCartMapper implements RowMapper<Cart> {
 
 	@Override
 	public Cart mapRow(ResultSet rs, int rowNum) throws SQLException {
-		Cart cart=new Cart();
-		int id=rs.getInt("id");
-		String size=rs.getString("size");
-		int quantity=rs.getInt("quantity");
-		int totalAmount=rs.getInt("total_amount");
+		Cart cart = new Cart();
+		int id = rs.getInt("id");
+		String size = rs.getString("size");
+		int quantity = rs.getInt("quantity");
+		int totalAmount = rs.getInt("total_amount");
 		cart.setId(id);
 		cart.setSize(size);
 		cart.setQuantity(quantity);

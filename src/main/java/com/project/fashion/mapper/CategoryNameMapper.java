@@ -11,9 +11,9 @@ public class CategoryNameMapper implements RowMapper<Category> {
 
 	@Override
 	public Category mapRow(ResultSet rs, int rowNum) throws SQLException {
-		Category category=new Category();
-		
-		String name=rs.getString("category_name");
+		Category category = new Category();
+
+		String name = rs.getString("category_name");
 		category.setCategoryName(name);
 		return category;
 	}

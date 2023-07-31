@@ -7,31 +7,42 @@ import com.project.fashion.exception.ExistProductException;
 import com.project.fashion.model.Category;
 import com.project.fashion.model.Product;
 
-public interface ProductInterface
-{
-	
-	//--Product----
+public interface ProductInterface {
+
+	// --Product----
 	public int saveProductDetails(Product product) throws ExistProductException;
+
 	public void updateProductDetails(int id, String name, int price, String size, int quantity, String fabric,
 			String gender);
+
 	public List<Product> allProductList();
+
 	public List<Product> inActiveProductList();
+
 	public Product getProductById(int productId);
+
 	public int deleteProduct(int id);
+
 	public int activeProduct(int id);
-	
+
 	public void saveCategoryDetails(Category category) throws ExistCategoryException;
+
 	public List<Category> categoryList();
+
 	public int deleteCategoryDetails(int id);
+
 	public int activeCategoryDetails(int id);
-	
-	
+
 	public List<Category> inActiveCategoryList();
+
 	public List<Category> getCategoryName();
+
 	public void updateCategoryName(int id, String name);
+
 	public Category findCategoryById(int id);
-	
+
 	public long getCurrentMonthSales();
+
 	public long getSalesList();
 
 }

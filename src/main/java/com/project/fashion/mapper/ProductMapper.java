@@ -3,7 +3,6 @@ package com.project.fashion.mapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 import org.springframework.jdbc.core.RowMapper;
 
 import com.project.fashion.model.Product;
@@ -12,15 +11,15 @@ public class ProductMapper implements RowMapper<Product> {
 
 	@Override
 	public Product mapRow(ResultSet rs, int rowNum) throws SQLException {
-		Product product=new Product();
-		int id=rs.getInt("id");
-		String name=rs.getString("name");
-		int price=rs.getInt("price");
-		String type=rs.getString("category");
-		String size=rs.getString("size");
-		String fabric=rs.getString("fabric");
-		String gender=rs.getString("gender");
-		String image=rs.getString("image");
+		Product product = new Product();
+		int id = rs.getInt("id");
+		String name = rs.getString("name");
+		int price = rs.getInt("price");
+		String type = rs.getString("category");
+		String size = rs.getString("size");
+		String fabric = rs.getString("fabric");
+		String gender = rs.getString("gender");
+		String image = rs.getString("image");
 		product.setId(id);
 		product.setName(name);
 		product.setPrice(price);
@@ -31,8 +30,5 @@ public class ProductMapper implements RowMapper<Product> {
 		product.setImage(image);
 		return product;
 	}
-
-	
-	
 
 }

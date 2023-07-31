@@ -135,21 +135,6 @@
 		const images = document.querySelector('.slider-carousel').children;
 		const totalImages = images.length;
 		let currentIndex = 0;
-
-
-		// Event Listeners to previous and next buttons
-		previous.addEventListener('click', () => {
-			previousImage()
-		})
-
-		next.addEventListener('click', () => {
-			nextImage();
-		})
-
-		setInterval(() => {
-			nextImage();
-		}, 1000);
-
 	</script>
 	<style>
 		.tab {

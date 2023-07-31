@@ -13,16 +13,17 @@ public class Validation {
 		if (names)
 			return true;
 		return names;
-		
+
 	}
 
 	public String adminEmailValidation(String email) {
 		Pattern p = Pattern.compile("^(.+)@(fashion)(.+)$");
 		Matcher m = p.matcher(email);
 		boolean mail = m.matches();
-		if (mail)
-		{return "true";}
-			return "false";
+		if (mail) {
+			return "true";
+		}
+		return "false";
 
 	}
 
@@ -33,7 +34,7 @@ public class Validation {
 		if (mail)
 			return true;
 		return mail;
-		
+
 	}
 
 	public boolean passwordValidation(String password) {
@@ -52,7 +53,7 @@ public class Validation {
 		if (phn)
 			return true;
 		return phn;
-		
+
 	}
 
 }

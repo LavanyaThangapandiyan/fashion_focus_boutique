@@ -93,23 +93,19 @@ public class UserController {
 		} else
 			return "";
 	}
-	
+
 	@GetMapping("/list")
-	public String showSalesinList(Model model )
-	{
+	public String showSalesinList(Model model) {
 		long salesList = productService.getSalesList();
-		model.addAttribute("salesamount",salesList);
+		model.addAttribute("salesamount", salesList);
 		long currentMonthSales = productService.getCurrentMonthSales();
-		model.addAttribute("currentMonthSales",currentMonthSales);
+		model.addAttribute("currentMonthSales", currentMonthSales);
 		long currentMonthProductSales = productService.getCurrentMonthProductSales();
-		model.addAttribute("currentMonthProductSalesCount",currentMonthProductSales);
+		model.addAttribute("currentMonthProductSalesCount", currentMonthProductSales);
 		long previousProductSales = productService.getPreviousProductSales();
-		model.addAttribute("previousMonthProductSalesCount",previousProductSales);
+		model.addAttribute("previousMonthProductSalesCount", previousProductSales);
 		return "list";
 	}
-	
-	
-	
 
 	// -----Handling Invalid Email Exception-----
 	@ExceptionHandler(InvalidEmailException.class)
@@ -321,29 +317,26 @@ public class UserController {
 		model.addAttribute("historylist", userService.getOrderHistoryList(userId));
 		return "history";
 	}
-	
+
 	@GetMapping("/logout")
-	public String getLogOutRequest(Model model,HttpSession session)
-	{	
-		return "logoutpopup";	
+	public String getLogOutRequest(Model model, HttpSession session) {
+		return "logoutpopup";
 	}
-	
+
 	@GetMapping("/logoutland")
-	public String getLogoutConfirmation(HttpSession session)
-	{	
+	public String getLogoutConfirmation(HttpSession session) {
 		userService.afterOrderClearCart(session);
 		session.invalidate();
 		return "index";
 	}
-	
+
 	@GetMapping("/cod")
-	public String showCodForm(HttpSession session)
-	{	
+	public String showCodForm(HttpSession session) {
 		return "cod";
 	}
+
 	@GetMapping("/codland")
-	public String showEndPage(HttpSession session)
-	{
+	public String showEndPage(HttpSession session) {
 		return "thank";
 	}
 }

@@ -1,8 +1,7 @@
 package com.project.fashion.model;
 
-
 public class User {
-	
+
 	private int id;
 	private String name;
 	private String email;
@@ -74,9 +73,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", mobile=" + mobile
-				+ ", gender=" + gender + "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", mobile="
+				+ mobile + ", gender=" + gender + "]";
 	}
-
 
 }
