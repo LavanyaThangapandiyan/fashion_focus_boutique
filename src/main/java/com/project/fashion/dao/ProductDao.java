@@ -136,7 +136,7 @@ public class ProductDao implements ProductInterface {
 			logger.error("Invalid Category Details ");
 	}
 
-	// ---- Active Category List---------
+	// ----Get Active Category List---------
 	public List<Category> categoryList() {
 		List<Category> listCategory;
 		String categoryList = "select id,category_name,is_available from category where is_available='Available'";
@@ -144,14 +144,15 @@ public class ProductDao implements ProductInterface {
 		return listCategory;
 	}
 
-	// ---- In Active Category List---------
+	// ----Get In Active Category List---------
 	public List<Category> inActiveCategoryList() {
 		List<Category> listCategory;
 		String categoryList = "select id,category_name,is_available from category where is_available='Not Available'";
 		listCategory = jdbcTemplate.query(categoryList, new CategoryMapper());
 		return listCategory;
 	}
-
+   
+	//--- Get available category Names---
 	public List<Category> getCategoryName() {
 		List<Category> getCategoryNameList;
 		String getCategoryName = "select category_name from category where is_available='Available'";
@@ -159,7 +160,7 @@ public class ProductDao implements ProductInterface {
 		return getCategoryNameList;
 	}
 
-	// --Category Updated---
+	// --- Update Category Names---
 	public void updateCategoryName(int id, String name) {
 		String input = name;
 		String categoryName = input.substring(0, 1).toUpperCase() + input.substring(1);
@@ -169,7 +170,7 @@ public class ProductDao implements ProductInterface {
 		logger.info("Update Category : " + updateRows);
 	}
 
-	// ---Get category By ID---
+	// ---Find category By --using category Id-
 	public Category findCategoryById(int id) {
 		Category listCategory;
 		String find = "select id,category_name,is_available from category where id=?";
@@ -177,7 +178,7 @@ public class ProductDao implements ProductInterface {
 		return listCategory;
 	}
 
-	// --Delete category Details---
+	// --Delete category Details Using Category Id---
 	public int deleteCategoryDetails(int id) {
 		String delete = "update category set is_available='Not Available' where id=?";
 		Object[] details = { id };
@@ -186,7 +187,7 @@ public class ProductDao implements ProductInterface {
 		return 1;
 	}
 
-	// ---Update Un Active to Active Category ---
+	// ---Update In Active to Active Category ---
 	public int activeCategoryDetails(int id) {
 		String active = "update category set is_available='Available' where id=?";
 		Object[] details = { id };
@@ -196,7 +197,7 @@ public class ProductDao implements ProductInterface {
 	}
 	// -----Sales ----
 
-	// ---Sales List----
+	// --- Get Monthly Sales List----
 	public long getSalesList() {
 		long salesAmount = 0;
 		// --Query For Using Only Take Last Month Of Sales Profit
@@ -207,7 +208,7 @@ public class ProductDao implements ProductInterface {
 		}
 		return salesAmount;
 	}
-
+    
 	public long getCurrentMonthSales() {
 		long salesAmount = 0;
 		// --Query For Using Only Take Current Month Of Sales Profit
@@ -220,7 +221,7 @@ public class ProductDao implements ProductInterface {
 	}
 
 	// ----Get Product Count Sales List
-
+     
 	public long getPreviousProductSales() {
 		long quantitySalesCount = 0;
 		// --Query For Using Only Take Current Month Of Sales Total Quantity

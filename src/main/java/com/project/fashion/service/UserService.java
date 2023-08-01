@@ -47,10 +47,6 @@ public class UserService {
 		return userDao.userList(model);
 	}
 
-	public void deleteUserDetails(User user) {
-		userDao.deleteUserDetails(user);
-	}
-
 	public void updateOrderDetails(int id, String size, int quantity, int amount, int userId) {
 		userDao.updateOrderDetails(id, size, quantity, amount, userId);
 	}
@@ -114,10 +110,6 @@ public class UserService {
 		return userDao.getWishListById(customerId);
 	}
 
-	public void activeAndInActiveWishList(int wishListId) {
-		userDao.activeAndInActiveWishList(wishListId);
-	}
-
 	public List<Order> getTotalAmountOrder(int userId, HttpSession session) {
 		return userDao.getTotalAmountOrder(userId, session);
 	}
@@ -132,10 +124,6 @@ public class UserService {
 
 	public void savePaymentDetails(Payment payment, HttpSession session) {
 		userDao.savePaymentDetails(payment, session);
-	}
-
-	public void paymentList() {
-		userDao.paymentList();
 	}
 
 	public List<Order> getOrderHistoryList(int userId) {

@@ -134,7 +134,7 @@ public class UserController {
 		return "error";
 	}
 
-	@GetMapping("forgotpassword")
+	@PostMapping("forgotpassword")
 	public String resetPassword(@RequestParam("email") String email, @RequestParam("password") String password,
 			Model model) throws InvalidEmailException, JsonProcessingException {
 		users.setEmail(email);
@@ -268,12 +268,6 @@ public class UserController {
 		model.addAttribute("cancelorder", userService.getCancelledOrdersList(userId));
 		model.addAttribute("amount", userService.getTotalAmountOrder(userId, session));
 		return "myorder";
-	}
-
-	@GetMapping(path = "/activeInactive/{id}")
-	public String activeAndInActiveWishList(@PathVariable(value = "id") int id) {
-		userService.activeAndInActiveWishList(id);
-		return "wish_list";
 	}
 
 	@GetMapping(path = "/cancelorder/{id}")

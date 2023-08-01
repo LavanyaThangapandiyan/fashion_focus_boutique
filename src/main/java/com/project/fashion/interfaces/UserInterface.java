@@ -24,8 +24,6 @@ public interface UserInterface {
 
 	public List<User> userList(Model model) throws JsonProcessingException;
 
-	public int deleteUserDetails(User user);
-
 	public int updateUserPassword(User user, Model model) throws InvalidEmailException, JsonProcessingException;
 
 	public int findIdByEmail(String email, HttpSession session);
@@ -70,12 +68,9 @@ public interface UserInterface {
 
 	public List<WishList> getWishListById(int customerId);
 
-	public int activeAndInActiveWishList(int wishListId);
 
 	// --Payment----
 	public void savePaymentDetails(Payment payment, HttpSession session);
-
-	public List<Payment> paymentList();
 
 	public void saveAlterTable(int userId);
 }

@@ -37,10 +37,12 @@ import com.project.fashion.util.ConnectionUtil;
 import com.project.fashion.validation.Validation;
 
 @Repository
+
 public class UserDao implements UserInterface {
 	Logger logger = LoggerFactory.getLogger(UserDao.class);
 	Validation valid = new Validation();
 	JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
+
 	// ----Inserting User Details
 	public int saveDetails(User user, Model model)
 			throws ExistMailIdException, ExistMobileException, JsonProcessingException {
@@ -65,8 +67,7 @@ public class UserDao implements UserInterface {
 			boolean email1 = valid.emailValidation(user.getEmail());
 			boolean password1 = valid.passwordValidation(user.getPassword());
 			boolean phone = valid.phoneNumberValidation(user.getMobile());
-			if (name && email1 && phone && password1)
-			{
+			if (name && email1 && phone && password1) {
 				String input = user.getName();
 				String userName = input.substring(0, 1).toUpperCase() + input.substring(1);
 				Object[] details = { userName, user.getEmail(), encodedPassword, user.getMobile(), user.getGender() };
@@ -79,7 +80,7 @@ public class UserDao implements UserInterface {
 		return 0;
 	}
 
-	// --------FindUser-----------
+	// --------Find User  Details-----------
 	public int findUserDetails(User user) throws InvalidEmailException {
 		String userEmail = user.getEmail();
 		String password = user.getPassword();
@@ -101,9 +102,7 @@ public class UserDao implements UserInterface {
 		throw new InvalidEmailException("Invalid Email Exception");
 	}
 
-	// find User Details By UserId
-
-	// ---User List----
+	// --- Get User List----
 	public List<User> userList(Model model) throws JsonProcessingException {
 		String userList = "select id,username,email,password,phone_number,gender from admin_user where is_available='Available'";
 		List<User> listUser = jdbcTemplate.query(userList, new UserMapper());
@@ -112,16 +111,6 @@ public class UserDao implements UserInterface {
 		model.addAttribute("listofuser", users);
 		return listUser;
 	}
-
-	// ----Delete User Details
-	public int deleteUserDetails(User user) {
-		String delete = "update admin_user set is_active=0 where email=?";
-		Object[] details = { user.getEmail() };
-		int numberOfRows = jdbcTemplate.update(delete, details);
-		logger.info("Deleted Rows :" + numberOfRows);
-		return 1;
-	}
-
 	// --Update user Password
 	public int updateUserPassword(User user, Model model) throws InvalidEmailException, JsonProcessingException {
 		String password = user.getPassword();
@@ -154,9 +143,7 @@ public class UserDao implements UserInterface {
 	}
 
 	// ----Cart CRUD----
-	// ----save Cart details--
 	Cart cart = new Cart();
-
 	// --- Show Update Details---
 	public Cart getcartUpdateDetails(int cartId) {
 		Cart queryForObject;
@@ -212,14 +199,15 @@ public class UserDao implements UserInterface {
 		logger.info("Update status Cart : " + update);
 	}
 
-	// ---Cart List--------
+	// --- Get ActiveCart List--------
 	public List<Cart> cartList(int customerId) {
 		List<Cart> cartList;
 		String getCartList = " select id,customer_id,product_id,image,product_name,price,size,product_type,quantity,total_amount,is_available from cart where customer_id=? and is_available='Available'";
 		cartList = jdbcTemplate.query(getCartList, new CartMapper(), customerId);
 		return cartList;
 	}
-
+    
+	//---Get In Active Cart List---
 	public List<Cart> inActiveCartList(int customerId) {
 		List<Cart> query;
 		String getInActiveCartList = "select id,customer_id,product_id,image,product_name,price,size,product_type,quantity,total_amount,is_available from cart where customer_id=? and is_available='Not Available'";
@@ -227,7 +215,7 @@ public class UserDao implements UserInterface {
 		return query;
 	}
 
-	// ---Filter--
+	// ---Product Filter--
 	public List<Product> allProductList(String category) {
 		List<Product> productList;
 		String find = "select id,name,price,category,size,quantity,fabric,gender,image from product where is_available='Available' and category=?";
@@ -286,7 +274,7 @@ public class UserDao implements UserInterface {
 			return 1;
 		}
 	}
-
+    //---Save Alter Table---
 	public void saveAlterTable(int userId) {
 		String listQuery = "select id,customer_id,product_id,image,productsname,price,size,category,quantity,total_amount,is_available from orders where customer_id=? and is_available='Available'";
 		List<Order> getOrderList = jdbcTemplate.query(listQuery, new OrderMapper(), userId);
@@ -317,7 +305,7 @@ public class UserDao implements UserInterface {
 		return 1;
 	}
 
-	// CLick to ReOrder
+	//---ReOrder---
 	public int reOrder(int id) {
 		String reOrder = "update orders set is_available='Available' where id=?";
 		Object[] details = { id };
@@ -334,7 +322,7 @@ public class UserDao implements UserInterface {
 		return queryForObject;
 	}
 
-	// ---- Get Orders List (Admin)
+	// ---- Get Orders List
 	public List<Order> getOrdersList(int userId) {
 		List<Order> getOrderList;
 		String listQuery = "select id,customer_id,product_id,image,productsname,price,size,category,quantity,total_amount,is_available from orders where customer_id=? and is_available='Available'";
@@ -348,7 +336,8 @@ public class UserDao implements UserInterface {
 		getOrderList = jdbcTemplate.query(listQuery, new OrderMapper(), userId);
 		return getOrderList;
 	}
-
+    
+	//---Get Total Order Amount----
 	public List<Order> getTotalAmountOrder(int userId, HttpSession session) {
 		String query = "SELECT SUM(total_amount) from orders where is_available='Available'";
 		List<Order> query2 = jdbcTemplate.query(query, new OrderAmountMappper());
@@ -359,7 +348,6 @@ public class UserDao implements UserInterface {
 	}
 
 	// ---get order History-----
-
 	public List<Order> getOrderHistoryList(int userId) {
 		List<Order> query2;
 		String query = "select id,customer_id,product_id,image,productsname,price,size ,category,quantity,total_amount,is_available from altercart where customer_id=? and  is_available='Available'";
@@ -394,16 +382,6 @@ public class UserDao implements UserInterface {
 		query = jdbcTemplate.query(getRow, new WishListMapper(), customerId);
 		return query;
 	}
-
-	// ---Active and In active in wish List---
-	public int activeAndInActiveWishList(int wishListId) {
-		String statusUpdate = "update wish_list set is_available=? where id=?";
-		Object[] details = { wish.getStatus(), wishListId };
-		int rows = jdbcTemplate.update(statusUpdate, details);
-		logger.info("Wish list status updated :" + rows);
-		return 1;
-	}
-
 	// -------------------Payment CRUD--------------------
 	// ---Save Payment Details---
 	public void savePaymentDetails(Payment payment, HttpSession session) {
@@ -435,13 +413,5 @@ public class UserDao implements UserInterface {
 		int deletesCart = jdbcTemplate.update(clearCart, deleteCart);
 		logger.info("After Payment Clear Cart : " + deletesCart);
 
-	}
-
-	// ---Get Payment Details (Admin)
-	public List<Payment> paymentList() {
-		List<Payment> listPayment;
-		String listQuery = "select order_id,amount,payment_type,Date from payment where order_id=?";
-		listPayment = jdbcTemplate.query(listQuery, new PaymentMapper());
-		return listPayment;
 	}
 }

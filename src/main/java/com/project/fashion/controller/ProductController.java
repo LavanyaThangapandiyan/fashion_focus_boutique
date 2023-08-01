@@ -1,5 +1,4 @@
 package com.project.fashion.controller;
-
 import java.io.IOException;
 import java.util.Base64;
 import org.springframework.stereotype.Controller;
@@ -18,8 +17,8 @@ import com.project.fashion.model.Product;
 import com.project.fashion.service.ProductService;
 
 @Controller
-public class ProductController {
-
+public class ProductController 
+{	
 	ProductService productService = new ProductService();
 	Product product = new Product();
 	Category category = new Category();
@@ -30,7 +29,6 @@ public class ProductController {
 			@RequestParam("quantity") int quantity, @RequestParam("gender") String gender,
 			@RequestParam("fabric") String fabric, @ModelAttribute("Product") Product product)
 			throws IOException, ExistProductException {
-
 		product.setName(name);
 		product.setPrice(price);
 		product.setType(type);
@@ -161,7 +159,6 @@ public class ProductController {
 		this.productService.activeCategoryDetails(id);
 		return "redirect:/category";
 	}
-
 	@GetMapping(path = "/sales")
 	public String showSales(Model model) {
 		long salesList = productService.getSalesList();
